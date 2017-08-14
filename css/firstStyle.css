@@ -1,11 +1,12 @@
 h1 {text-align: center;
-    margin: 2rem;
+    margin-top: 2rem;
+    font-size: 3rem;
     }
 p {font-size: 1.6rem}
-a{font-size: 1.6rem}
+a{font-size: 2rem}
 div {
-    margin-left:10%;
-    width:auto;
+    margin-left:6rem;
+    width:15rem;
     height: auto;}
 a:visited {color:green;
             text-decoration: none;}
