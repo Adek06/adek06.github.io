@@ -1,6 +1,12 @@
-h1 {text-align: center;}
+h1 {text-align: center;
+    margin: 2rem;
+    }
 p {font-size: 1.6rem}
 a{font-size: 1.6rem}
+div {
+    margin-left:10%;
+    width:auto;
+    height: auto;}
 a:visited {color:green;
             text-decoration: none;}
 a:link {color:green;
