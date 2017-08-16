@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>荒野求生</title>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/webGame.json");
+    </script>
+  </head>
+  <body>
+    <div id="gameContainer" style="margin-left:25rem;width: 960px; height: 600px;float:left"></div>
+    <div style="float:right；">
+        <p>
+          游戏控制：WASD 或者 方向键
+        </p>
+        <p>
+          游戏规则：在荒野上找到出口,不要饿死！
+        </p>
+    </div>
+  </body>
+</html>
