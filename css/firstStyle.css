@@ -1,0 +1,18 @@
+h1 {text-align: center;
+    margin-top: 2rem;
+    font-size: 3rem;
+    }
+p {font-size: 1.6rem}
+a{font-size: 2rem}
+div {
+    margin-left:6rem;
+    width:20rem;
+    height: auto;}
+a:visited {color:green;
+            text-decoration: none;}
+a:link {color:green;
+        text-decoration: none;}
+a:hover {
+  color:blue;
+  text-decoration: underline;
+}
