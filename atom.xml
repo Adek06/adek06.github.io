@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://adek06.github.io/</id>
-    <title>Gamer</title>
-    <updated>2019-05-30T14:31:35.179Z</updated>
+    <title>Gamer——游先生的个人网站</title>
+    <updated>2019-05-31T04:11:54.105Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://adek06.github.io/"/>
     <link rel="self" href="https://adek06.github.io//atom.xml"/>
     <subtitle>跟游戏有什么关系</subtitle>
     <logo>https://adek06.github.io//images/avatar.png</logo>
     <icon>https://adek06.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, Gamer</rights>
+    <rights>All rights reserved 2019, Gamer——游先生的个人网站</rights>
     <entry>
         <title type="html"><![CDATA[放弃过去的文章了]]></title>
         <id>https://adek06.github.io//post/fang-qi-guo-qu-de-wen-zhang-liao</id>
@@ -19,10 +19,6 @@
         <summary type="html"><![CDATA[<p>我真傻，真的。。。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>我真傻，真的。。。</p>
- <!-- more --> 
-<p>由于用某个同步软件的时候，没注意看说明（当然，作者也没说），导致过去了文章被 commit 盖住了。不仅如此，连我过去 commit 的记录也没了。呵呵呵</p>
-<p>也好吧，吸取教训，下次用软件之前，一定要好好了解运行规则。</p>
-<p>好在部分备份还留在电脑本地，好在过去的文章不值一提，好在也没人看过 : ) 。就让那过去成为历史，消失在茫茫宇宙之中。</p>
 ]]></content>
     </entry>
     <entry>
@@ -34,10 +30,6 @@
         <summary type="html"><![CDATA[<p>✍️  如果你想知道关于我的事。。。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>✍️  如果你想知道关于我的事。。。</p>
-<!-- more -->
-<p>我是一个自诩的游戏开发者。但现在为止（2019-0527）还没做个一个完整的游戏项目。</p>
-<p>但这并不意味着什么。任何事都要有个开始点。</p>
-<p>明天再努力吧。（昨天也说过，但今天是认真的！）</p>
 ]]></content>
     </entry>
 </feed>
