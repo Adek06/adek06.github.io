@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://adek06.github.io/</id>
     <title>Gamer——游先生的个人网站</title>
-    <updated>2019-06-02T05:44:09.001Z</updated>
+    <updated>2019-06-02T10:35:38.056Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://adek06.github.io/"/>
     <link rel="self" href="https://adek06.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://adek06.github.io//images/avatar.png</logo>
     <icon>https://adek06.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gamer——游先生的个人网站</rights>
+    <entry>
+        <title type="html"><![CDATA[做点小工作]]></title>
+        <id>https://adek06.github.io//post/zuo-dian-xiao-gong-zuo</id>
+        <link href="https://adek06.github.io//post/zuo-dian-xiao-gong-zuo">
+        </link>
+        <updated>2019-06-02T10:02:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>计算模拟考试前，老师发了一份复习题纲。用的是普通的文本写的，一些公式看上去很乱。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>计算模拟考试前，老师发了一份复习题纲。用的是普通的文本写的，一些公式看上去很乱。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[我不喜欢安卓]]></title>
         <id>https://adek06.github.io//post/wo-bu-xi-huan-an-zhuo</id>
