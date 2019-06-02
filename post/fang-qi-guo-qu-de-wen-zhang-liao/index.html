@@ -1,91 +1,99 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>放弃过去的文章了 | Gamer——游先生的个人网站</title>
-<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1559451329084">
+<meta name="description" content="跟游戏有什么关系">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1559451377495">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://adek06.github.io//styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://adek06.github.io/">
-  <img class="avatar" src="https://adek06.github.io//images/avatar.png?v=1559451329084" alt="">
-  </a>
-  <h1 class="site-title">
-    Gamer——游先生的个人网站
-  </h1>
-  <p class="site-description">
-    跟游戏有什么关系
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://adek06.github.io/">
+        <img src="https://adek06.github.io//images/avatar.png?v=1559451377495" class="site-logo">
+        <h1 class="site-title">Gamer——游先生的个人网站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      跟游戏有什么关系
+    </div>
+    <div class="site-footer">
+      我是游先生 | <a class="rss" href="https://adek06.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              放弃过去的文章了
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-05-30 ·
-              </time>
-              
-                <a href="https://adek06.github.io//tag/gridea" class="post-tag">
-                  # Gridea
-                </a>
-              
-            </div>
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">放弃过去的文章了</h2>
+            <div class="post-date">2019-05-30</div>
             
             <div class="post-content">
               <p>我真傻，真的。。。</p>
@@ -95,32 +103,53 @@
 <p>好在部分备份还留在电脑本地，好在过去的文章不值一提，好在也没人看过 : ) 。就让那过去成为历史，消失在茫茫宇宙之中。</p>
 
             </div>
-          </article>
-        </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://adek06.github.io//tag/gridea" class="tag">
+                    Gridea
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://adek06.github.io//post/hello-gamer">
+                  <h3 class="post-title">
+                    Hello Gamer
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://adek06.github.io//post/hello-gamer">
-              <h3 class="post-title">
-                Hello Gamer
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  我是游先生 | 
-  <a class="rss" href="https://adek06.github.io//atom.xml" target="_blank">RSS</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
-
+        </div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
   </body>
 </html>
