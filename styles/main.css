@@ -756,22 +756,7 @@ a {
         color: #495057;
       }
     
-      .sidebar {
-    width: 320px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background-color: #7c8280;
-    background-size: cover;
-    background-position: center;
-    background-image: url(../media/images/cute-pokemon-background-As-Wallpaper-HD.png);
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-
- .site-description {
+       .site-description {
      padding: 16px 0;
      color: #495057;
 }
