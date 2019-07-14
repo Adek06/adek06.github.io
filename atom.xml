@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://adek06.github.io/</id>
     <title>Gamer——游先生的个人网站</title>
-    <updated>2019-06-02T10:51:03.675Z</updated>
+    <updated>2019-07-14T13:50:17.446Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://adek06.github.io/"/>
     <link rel="self" href="https://adek06.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://adek06.github.io//images/avatar.png</logo>
     <icon>https://adek06.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gamer——游先生的个人网站</rights>
+    <entry>
+        <title type="html"><![CDATA[初识 YAF 框架 和 MVC]]></title>
+        <id>https://adek06.github.io//post/guan-yu-yaf-kuang-jia-de-yi-dian-dong-xi</id>
+        <link href="https://adek06.github.io//post/guan-yu-yaf-kuang-jia-de-yi-dian-dong-xi">
+        </link>
+        <updated>2019-07-14T13:48:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>这是我第一次使用 PHP 做开发。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>这是我第一次使用 PHP 做开发。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[做点小工作]]></title>
         <id>https://adek06.github.io//post/zuo-dian-xiao-gong-zuo</id>
