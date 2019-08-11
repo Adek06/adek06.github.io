@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1565527250956">
+<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1565527860687">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://adek06.github.io//styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://adek06.github.io/">
-        <img src="https://adek06.github.io//images/avatar.png?v=1565527250956" class="site-logo">
+        <img src="https://adek06.github.io//images/avatar.png?v=1565527860687" class="site-logo">
         <h1 class="site-title">Gamer——游先生的个人网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -110,7 +110,8 @@
 <p>同时，我也要好奇。虚拟化那麽厉害的东西，究竟是怎麽完成的？</p>
 <p>仔细想想，虚拟化并不是什麽新奇的东西。我们的每一个进程，从某种角度上看，就是虚拟化的产物。</p>
 <p>在早期计算机的发展中，内存是很稀缺的一种东西。比如有些电脑就 4k bytes。这种情况下，光是加载程序文本就很困难。于是虚拟内存、页表等孕育而生。它们让每一个进程觉得，自己独佔了机器，随意使用计算机里的内存。通过 CPU 调度，让每一个进程都有一定的活动时间。从人的角度上看，有多个进程在运行，而进程本身，它们只看到了自己。</p>
-<p>再这之后，改变了世界的 Linux 给我们带来了更美妙的东西。</p>
+<p>从这个角度上看，每一个进程都与主机上的其它程序无关，它们彼此隔开，就好像一台台虚拟机。</p>
+<p>不过，改变了世界的 Linux 给我们带来了更美妙的东西。</p>
 <p>在 Linux 里，有趣的命令很多，其中的一条就和我今天想讨论的东西有关。它就是 chroot。</p>
 <p>chroot 是一个可以欺骗命令的命令。它可以让任何命令，认爲当前的目录就是根目录。</p>
 <pre><code class="language-shell"># chroot /path/to/new/root command
@@ -118,7 +119,7 @@
 <p>Linux 中，绝大部分命令、程序，都以根目录 「/」 爲中心。如果能欺骗命令，让其认定新的根目录，不就好像实现了虚拟化了吗？</p>
 <p>比如下面这一个有趣的实验。它建立了一个只能使用 ls 命令的监狱(jali)。方法也很简单，只将跟 ls 有关的依赖放在新目录里，再 chroot bash 命令。</p>
 <p><img src="https://adek06.github.io//post-images/1565527230467.gif" alt="建立监狱的过程"></p>
-<p>可以看到，这其实已经实现了虚拟化。但这并不够。chroot 只能使用在文件系统上。对于网络，IO等，它无法限制。</p>
+<p>但这并不够。chroot 只能使用在文件系统上。对于网络，IO等，它无法限制。</p>
 <p>于是，内核 3.8 中，诞生的 namespace（命名空间）打破了这一限制。namespace 也是一种虚拟化方式，但它可以做到更多。它支持以下几种 namespace。</p>
 <ul>
 <li>uts_namespace</li>
