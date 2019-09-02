@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://adek06.github.io/</id>
     <title>Gamer——游先生的个人网站</title>
-    <updated>2019-08-17T09:49:50.136Z</updated>
+    <updated>2019-09-02T02:48:33.297Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://adek06.github.io/"/>
     <link rel="self" href="https://adek06.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://adek06.github.io//images/avatar.png</logo>
     <icon>https://adek06.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gamer——游先生的个人网站</rights>
+    <entry>
+        <title type="html"><![CDATA[调度算法（一）]]></title>
+        <id>https://adek06.github.io//post/diao-du-suan-fa-yi</id>
+        <link href="https://adek06.github.io//post/diao-du-suan-fa-yi">
+        </link>
+        <updated>2019-09-02T02:41:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>当进程虚拟化完成时，会自然遇到一个问题：我们该切换到哪一个进程？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>当进程虚拟化完成时，会自然遇到一个问题：我们该切换到哪一个进程？</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[虛擬內存]]></title>
         <id>https://adek06.github.io//post/xu-ni-nei-cun</id>
