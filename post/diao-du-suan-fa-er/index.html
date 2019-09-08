@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>調度算法（二） | Gamer——游先生的个人网站</title>
+<meta name="description" content="跟游戏有什么关系">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1567929742233">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://adek06.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://adek06.github.io/">
+        <img src="https://adek06.github.io//images/avatar.png?v=1567929742233" class="site-logo">
+        <h1 class="site-title">Gamer——游先生的个人网站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      跟游戏有什么关系
+    </div>
+    <div class="site-footer">
+      我是游先生 | <a class="rss" href="https://adek06.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">調度算法（二）</h2>
+            <div class="post-date">2019-09-08</div>
+            
+            <div class="post-content">
+              <p>說完 SJF 算法，我們再來看看一個新的問題。</p>
+<!--more-->
+<p>如果，所有的任務並不是同時進入隊列怎麼辦？</p>
+<p>SJF 算法之所以成立，很重要的一點是：我們知道隊列裏所有 job，並且比較了它們。假如，哪怕是 1s，兩個任務先後進入了隊列，我們的 CPU 可能就無法比較它們，然後找出最短的 job，SJF 算法也就崩分離析，變回了 FIFO。</p>
+<p>爲了解決這個問題，我們在 SJF 的高度上，再做一點修改。</p>
+<h2 id="最先能完成的先來-stcf-short-time-to-completion-first">最先能完成的先來 STCF (Short Time-to-Completion First)</h2>
+<p>前面的兩個算法，無論是 FIFO 還是 SJF 都是按順序執行的，也就是說，隊列前面的 job 沒完成，是不能執行後面的 job。</p>
+<p>這點有點違背現實。我們煮水時，是不會等水煮完再去洗杯子，而應該是等水開的時間裏去洗。雖然這個例子並不適用於我們要說的這個算法，但理念是相同的：我們可以中斷任務，然後執行其它任務。</p>
+<p>現在任務 A 是 100s 完成，B 是 10s 完成。還是最開始的問題：如果兩個 job 先後進入隊列裏，應該怎麼辦？</p>
+<p>在 SJF 裏，如果 B 先進那還好，A 先進入的話，就出問題了。因爲 A 進入時，隊列裏還沒有任何 job，那麼 CPU 理所當然的認爲 A 是最短的任務，然後執行它。這時候再進入 B，已經是執行 A 之後的事了，B 只能乖乖等 A 執行完。那麼 <em>Turnaroud Time</em> 平均時間和 FIFO 是完全一樣的。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mn>100</mn><mo>+</mo><mn>110</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>105</mn><mi>s</mi></mrow><annotation encoding="application/x-tex">\cfrac{100+110}{2} = 105 s
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5899999999999999em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mord">1</span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">5</span><span class="mord mathdefault">s</span></span></span></span></span></p>
+<p>換成 STCF，如果 A 先後進入隊列裏，B 在進入，會發生什麼？首先，在 B 進來之前，A 是<strong>最短可完成</strong>的 job。在執行 1s 之後，隊列 B 進來了。隊列一看，發現 B 才是<strong>最短可完成</strong>的 job。於是 CPU 會中斷，(關於 job 之前的切換，以後再提)然後換成執行 B，等 B 完成之後，再執行 A。</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mn>10</mn><mo>+</mo><mn>10</mn><mo>+</mo><mn>100</mn></mrow><mn>2</mn></mfrac><mo>=</mo><mn>60</mn><mi>s</mi></mrow><annotation encoding="application/x-tex">\cfrac{10+10+100}{2} = 60 s
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5899999999999999em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mord mathdefault">s</span></span></span></span></span></p>
+<p>減少近一半的時間。所以，這麼優化是值得的。這幾乎是我們能想到，最優的算法了吧？</p>
+<h2 id="rrround-robin">RR（Round Robin）</h2>
+<p>如果之滿足於 <em>Turnaroud Time</em> ,那麼我們的任務應該在 STCF 提出時就結束了。但我們不能只滿足於 <em>Turnaroud Time</em> 。</p>
+<p>假想，如果有三個 job，每一 job 都要花 1000s，在第一個 job 完成之前，你得等到 1000s 之後，才能看到第二個 job 開始工作。天！我想要知道自己輸進去的式子有沒有問題，必須等到 1000s 後，才能看到第一次運行！響應太慢了！</p>
+<p>能想到最簡單的辦法，就是加快 STCF 的切換過程。比如，A 執行幾秒，B 執行幾秒，這樣不停的切換就好了。這也是 Round Robin 算法的核心。</p>
+<p>不過，如果這樣的法，STCF 的關鍵<strong>最短可完成</strong>就沒了，同時，頻繁切換進程也會產生很大的花銷，切換得越快，花銷就越多，這樣是否值得？換而言之，我們 STCF 算法依然不是我們想要的，最優的，算法。</p>
+<hr>
+<h2 id="最關鍵的問題">最關鍵的問題</h2>
+<p>我們要找到一個算法，它的 <em>Turnaroud Time</em> 期望最小，同時，還要很快的響應。這才是我們的目標。</p>
+<p>還有，我們還要解決從最開始就設下的，絕對不可以忽視的，上面所有算法的根基條件。破壞這個條件，也意味着，上面的一切算法將會轟然倒塌，那就是：<strong>我們無法知道任務的運行時間。</strong></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://adek06.github.io//tag/bSI1dx03W" class="tag">
+                    计算机系统
+                  </a>
+                
+                  <a href="https://adek06.github.io//tag/B160eImvr" class="tag">
+                    虚拟化
+                  </a>
+                
+                  <a href="https://adek06.github.io//tag/8XounFizo" class="tag">
+                    学习
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://adek06.github.io//post/diao-du-suan-fa-yi">
+                  <h3 class="post-title">
+                    调度算法（一）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

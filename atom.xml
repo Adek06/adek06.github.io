@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://adek06.github.io/</id>
     <title>Gamer——游先生的个人网站</title>
-    <updated>2019-09-02T02:48:33.297Z</updated>
+    <updated>2019-09-08T08:02:27.491Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://adek06.github.io/"/>
     <link rel="self" href="https://adek06.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://adek06.github.io//images/avatar.png</logo>
     <icon>https://adek06.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gamer——游先生的个人网站</rights>
+    <entry>
+        <title type="html"><![CDATA[調度算法（二）]]></title>
+        <id>https://adek06.github.io//post/diao-du-suan-fa-er</id>
+        <link href="https://adek06.github.io//post/diao-du-suan-fa-er">
+        </link>
+        <updated>2019-09-08T08:01:15.000Z</updated>
+        <summary type="html"><![CDATA[<p>說完 SJF 算法，我們再來看看一個新的問題。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>說完 SJF 算法，我們再來看看一個新的問題。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[调度算法（一）]]></title>
         <id>https://adek06.github.io//post/diao-du-suan-fa-yi</id>
@@ -103,17 +114,6 @@
         <summary type="html"><![CDATA[<p>我真傻，真的。。。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>我真傻，真的。。。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gamer]]></title>
-        <id>https://adek06.github.io//post/hello-gamer</id>
-        <link href="https://adek06.github.io//post/hello-gamer">
-        </link>
-        <updated>2019-05-27T05:39:46.000Z</updated>
-        <summary type="html"><![CDATA[<p>✍️  如果你想知道关于我的事。。。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>✍️  如果你想知道关于我的事。。。</p>
 ]]></content>
     </entry>
 </feed>

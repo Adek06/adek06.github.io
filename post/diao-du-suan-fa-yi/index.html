@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1567392510110">
+<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1567929742233">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://adek06.github.io//styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://adek06.github.io/">
-        <img src="https://adek06.github.io//images/avatar.png?v=1567392510110" class="site-logo">
+        <img src="https://adek06.github.io//images/avatar.png?v=1567929742233" class="site-logo">
         <h1 class="site-title">Gamer——游先生的个人网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -106,10 +106,10 @@
 <p>现在，是时候来好好回答一下这个问题。</p>
 <hr>
 <p>先从最简单的想法开始。</p>
-<h2 id="先进先出队列">先进先出队列</h2>
+<h2 id="先进先出队列-fifo-first-in-fisrt-out">先进先出队列 FIFO (First In Fisrt Out)</h2>
 <p>假设同一时间里，有多个任务，那麽，谁先到队列就先执行谁，完成后再执行下一个。</p>
 <p>这个想法很像超市排队。实事上，这也是它被叫队列的原因，每一个任务都一样，不管你从哪里来，有什麽身份，都给我乖乖排队。</p>
-<h2 id="最短的先来">最短的先来</h2>
+<h2 id="最短的先来-sjf-shortest-job-first">最短的先来 SJF (Shortest Job First)</h2>
 <p>可这有一点问题。虽然在计算机的眼中，这个队列怎麽排，总的运行时长是相同的，不会因爲 A 在 B 前，时间就比 B 在 A 前短。可任务不这麽想。</p>
 <p>还是在超市排队的例子。收营员压根不管谁在前谁在后，他只负责收营，在他眼中，整个队列的时长是一定的。</p>
 <p>但买东西的顾客就不一样了。顾客很在乎从排队开始到结算完的这段时长，因爲他们只看到了自己。每个人排了多久才完成结账的时间完全不同的。如果只有顾客 A 和 B 在排队。A 的东西要 10 分锺算完，B 要 5 分锺。如果 A 在 B 前结算，B 需要 15 分锺完成结账，反过来，B 在 A 前的话，B 只要 5 分锺就完成了。在 B 眼中，后者更高效。</p>
