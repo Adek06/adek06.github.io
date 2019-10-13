@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1570974729181">
+<link rel="shortcut icon" href="https://adek06.github.io//favicon.ico?v=1570974778878">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://adek06.github.io//styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://adek06.github.io/">
-        <img src="https://adek06.github.io//images/avatar.png?v=1570974729181" class="site-logo">
+        <img src="https://adek06.github.io//images/avatar.png?v=1570974778878" class="site-logo">
         <h1 class="site-title">Gamer——游先生的个人网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -102,7 +102,7 @@
               <p>以前在阅读有关于 Python 性能的文章时，总是有人提到「僞线程」和「线程锁」这两个词。由于基础不够，当有人提到 Python 性能时，我也只能学着他们，说「Python 是僞线程啦！不行啦！」之类的话。但是，印在我股子里的装B劲，还是渴望有一天能理解，究竟何爲「锁」？爲何需要「锁」？如何「锁」？以及「GIL的问题」。</p>
 <!-- more -->
 <h2 id="何爲锁">何爲锁？</h2>
-<p><img src="typora_picture/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1524717396.png" alt="img"></p>
+<p><img src="https://adek06.github.io//post-images/1570974760163.png" alt=""></p>
 <p>如上面这张图所展示的，在运行多线程 Python 程序时，CPU 内只允许一个线程运行，开始运行其中一个线程时，一定要将「锁」住，不让其它线程运行。当要运行其它线程时，会打开锁，然后再执行第二个线程。如此一来，同一个 CPU 里，只允许一个线程运行。</p>
 <h2 id="爲何需要锁">爲何需要锁？</h2>
 <p>当然，你也许会想：正常情况下，单核 CPU 也是一次运行一个线程，然后系统中断去执行其它线程，锁的意义何在啊？</p>
@@ -155,9 +155,9 @@
 45 }
 </code></pre>
 <p>上面的这段代码，使用了两个线程操作一个全局变量 counter，每个线程都将它加到 1e7。可以预见，它最后的结果将是 2e7。可是，实际运行下来，并非如此。</p>
-<p><img src="typora_picture/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570631470895.png" alt="1570631470895"></p>
-<p><img src="typora_picture/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570631486846.png" alt="1570631486846"></p>
-<p><img src="typora_picture/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570631501287.png" alt="1570631501287"></p>
+<p><img src="https://adek06.github.io//post-images/1570974768741.png" alt="">
+<img src="https://adek06.github.io//post-images/1570974768743.png" alt="">
+<img src="https://adek06.github.io//post-images/1570974769063.png" alt=""></p>
 <p>三次运行下来，结果完全不同。</p>
 <p>这违反了我们的直觉。明明同一段代码，操作同一个变量，爲什麽出来了完全不同的答案？</p>
 <p>原因不难解释，我们先来看看 X86 架构下 加法 操作对应的汇编代码。</p>
