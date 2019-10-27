@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://adek06.github.io/</id>
     <title>Gamer——游先生的个人网站</title>
-    <updated>2019-10-13T13:53:01.394Z</updated>
+    <updated>2019-10-27T14:45:25.952Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://adek06.github.io/"/>
     <link rel="self" href="https://adek06.github.io//atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://adek06.github.io//images/avatar.png</logo>
     <icon>https://adek06.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gamer——游先生的个人网站</rights>
+    <entry>
+        <title type="html"><![CDATA[CSRF 和 XSS]]></title>
+        <id>https://adek06.github.io//post/csrf-he-xss</id>
+        <link href="https://adek06.github.io//post/csrf-he-xss">
+        </link>
+        <updated>2019-10-27T14:44:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[线程锁（一）]]></title>
         <id>https://adek06.github.io//post/xian-cheng-suo-yi</id>
@@ -103,17 +114,6 @@
         <summary type="html"><![CDATA[<p>这是我第一次使用 PHP 做开发。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>这是我第一次使用 PHP 做开发。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[做点小工作]]></title>
-        <id>https://adek06.github.io//post/zuo-dian-xiao-gong-zuo</id>
-        <link href="https://adek06.github.io//post/zuo-dian-xiao-gong-zuo">
-        </link>
-        <updated>2019-06-02T10:02:34.000Z</updated>
-        <summary type="html"><![CDATA[<p>计算模拟考试前，老师发了一份复习题纲。用的是普通的文本写的，一些公式看上去很乱。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>计算模拟考试前，老师发了一份复习题纲。用的是普通的文本写的，一些公式看上去很乱。</p>
 ]]></content>
     </entry>
 </feed>
