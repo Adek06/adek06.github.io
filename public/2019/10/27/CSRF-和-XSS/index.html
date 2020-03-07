@@ -7,15 +7,15 @@
   
   <title>CSRF 和 XSS | 我是游先生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。 说到网络攻击，最常见到的两个词就是 CSRF 和 XSS。这是比较常见，也比较简单的攻击了。只要网站的设计者缺少这方面的常识，就能轻易攻击。不过现在的网站框架都会加上这方面的防护了吧？ 不过，我还是想做个简短的笔记，来回忆这几天的想法。 什麽是 CSRFC">
+  <meta name="description" content="最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSRF 和 XSS">
 <meta property="og:url" content="http://yoursite.com/2019/10/27/CSRF-%E5%92%8C-XSS/index.html">
 <meta property="og:site_name" content="我是游先生">
-<meta property="og:description" content="最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。 说到网络攻击，最常见到的两个词就是 CSRF 和 XSS。这是比较常见，也比较简单的攻击了。只要网站的设计者缺少这方面的常识，就能轻易攻击。不过现在的网站框架都会加上这方面的防护了吧？ 不过，我还是想做个简短的笔记，来回忆这几天的想法。 什麽是 CSRFC">
+<meta property="og:description" content="最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。">
 <meta property="og:locale" content="zh">
 <meta property="article:published_time" content="2019-10-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-03-07T06:52:12.250Z">
+<meta property="article:modified_time" content="2020-03-07T08:02:18.279Z">
 <meta property="article:author" content="游先生">
 <meta name="twitter:card" content="summary">
   
@@ -93,6 +93,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。</p>
+<a id="more"></a>
+
 <p>说到网络攻击，最常见到的两个词就是 CSRF 和 XSS。这是比较常见，也比较简单的攻击了。只要网站的设计者缺少这方面的常识，就能轻易攻击。不过现在的网站框架都会加上这方面的防护了吧？</p>
 <p>不过，我还是想做个简短的笔记，来回忆这几天的想法。</p>
 <h2 id="什麽是-CSRF"><a href="#什麽是-CSRF" class="headerlink" title="什麽是 CSRF"></a>什麽是 CSRF</h2><p>Crossing Site Request Forgery，跨站请求僞造。是一种利用 Cookies 进行攻击的方式。</p>
