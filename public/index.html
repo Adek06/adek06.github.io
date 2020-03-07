@@ -68,6 +68,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-某明星与亚文化平台" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/07/%E6%9F%90%E6%98%8E%E6%98%9F%E4%B8%8E%E4%BA%9A%E6%96%87%E5%8C%96%E5%B9%B3%E5%8F%B0/" class="article-date">
+  <time datetime="2020-03-07T08:14:24.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/%E6%9F%90%E6%98%8E%E6%98%9F%E4%B8%8E%E4%BA%9A%E6%96%87%E5%8C%96%E5%B9%B3%E5%8F%B0/">某明星与亚文化平台</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我向来是不关心国内小鲜肉市场的（主要看他们长得帅，把女孩都吸走了，气！），但这次的主角比较特殊（某个女孩特别喜欢他，甚至不惜绕着厦门岛转，就是想看他一眼，想到这里就更气了！）。但不想针对谁，评价人不是我的强项。</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/03/07/%E6%9F%90%E6%98%8E%E6%98%9F%E4%B8%8E%E4%BA%9A%E6%96%87%E5%8C%96%E5%B9%B3%E5%8F%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/07/%E6%9F%90%E6%98%8E%E6%98%9F%E4%B8%8E%E4%BA%9A%E6%96%87%E5%8C%96%E5%B9%B3%E5%8F%B0/" data-id="ck7hc1f5p0000su3xg4hu1ehj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSRF-和-XSS" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/" class="article-date">
@@ -296,38 +337,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h2 id="没有虚拟内存带来的问题"><a href="#没有虚拟内存带来的问题" class="headerlink" title="没有虚拟内存带来的问题"></a>没有虚拟内存带来的问题</h2><p>我们在运行程序时，总希望内存越大越好，这样可以运行的程序也可以越来越多，越来越大。但现实是，这样做是有很多成本的。最简单的成本就是钱。过去，爲了解决这个问题，人们写程序时，会考虑到内存大小，如果自己写的程序大过内存，那麽还要做一些工作，比如：想办法，只加载一部分代码，当有更多的需要时，再加载更多。</p>
-<p>这是一个相当有开创性的想法。这一想法在后来诞生了虚拟内存的伟大概念。（我瞎掰的）</p>
-<h2 id="虚拟内存的基本原理"><a href="#虚拟内存的基本原理" class="headerlink" title="虚拟内存的基本原理"></a>虚拟内存的基本原理</h2><p><img src="1566035265964.png" alt=""></p>
-<p>简单来说，当我们运行一个进程时，计算机并不会把整个程序都加载进内存里，而是放在硬盘上，当有需要时，再将加载需要的那一部分。</p>
-<p>那我们怎麽知道要加载哪一部分？比如说，我的下一条指令是到要变量 B，可是变量 B 没加载进内存，我也不知道它在哪，要怎麽去硬盘里找？</p>
-<p>那好吧，爲了做好映射关係，我们还要在进程运行时，给进程一张表，它负责进行内存和硬盘之间的关係。比如说，变量 B 的内存是 Ox11011，发现这在内存里不存在，那麽我们就去表上找，发现它在对应着内存里的 Ox00100，那麽我们就把内存里的那个 B 给它。</p>
-<p>但如果每一个变量，每个字都做映射，都要到硬盘里找，这实在是太麻类了。更重要的是，对硬盘做一次查询，所消耗的时间太长了，在 CPU 看来，每进行一次，都要花费 10 个月的时间。爲了省时省力，我们把程序分成多个部分，每一部分叫做一个虚拟页。同时，内存里也分成多个页，叫物理页。每一个物理页都可以容纳一个虚拟页。而映射它们的那张表，叫页表。</p>
-<p>现在我们来看看一个实例，虚拟地址是如何转换成物理地址的。</p>
-<p>一般而言，计算机是通过多级页表进行转换的，但爲了简单，这里就讨论只有一张页表的情况。</p>
-<p>现在设有 14 位的虚拟地址，要转换成 12 位的真实地址。其中，页表大小爲 64(2的6次方) B。</p>
-<ol>
-<li><p>通过虚拟地址位数和页大小，我们可以换算得到，共有 21426=256\cfrac{2^{14}}{2^6}=25626214​=256 项。也就是说，要 8 位数才能表示完所有页(VPN)。那麽 14−8=614-8=614−8=6 来表示偏移量(VPO)。</p>
-</li>
-<li><p>由虚拟地址的偏移量，我们可以知道真实地址的偏移量。（两者相等）</p>
-</li>
-</ol>
-<p>比如下面，我们已知虚拟地址爲 00101100100010 （VPN(8) VPO(6)）</p>
-<p>那麽 00101100 爲虚拟页的首地址（页码）。100010 爲虚拟地址的偏移量。</p>
-<p>通过查页表，将 00101100 映射爲真实地址，假设爲 11010011，再加上偏移量 100010 得到真实地址 11010011100010.</p>
-<blockquote>
-<p>00101100100010 =&gt; 11010011100010</p>
-</blockquote>
-<p>到这里，地址转换就完成了！</p>
-<p>如果是多级页表，也只是通过多个 虚拟首地址（页码） 的转换而已。变成 VPN VPN VPN VPN … VPO。</p>
-<h2 id="它带来的好处"><a href="#它带来的好处" class="headerlink" title="它带来的好处"></a>它带来的好处</h2><p>简化链接、简化内存分配（不连续）、进程上的安全（不会干扰到其它进程）</p>
-<p>虚拟内存的出现，给我们带来了意想不到的好处。</p>
-<p>首先，它简化了链接过程。当程序编译完成时，程序里的每一个变量，每一个函数，还只是对应一个相对的地址，想要执行，还得有一个动态链接过程。由于虚拟页的存在，生成的可执行文件的地址可以独立于物理内存，这样设计链接器时，就简单得多。</p>
-<p>另外，因爲虚拟页与物理页之间是靠页表进行映射的，因此，一个进程的不周数据在物理内存里，可以不连续。毕竟查表就能知道它们的位置了，连不连续已经不重要了。于是，这样内存可以更动态，更轻鬆的进行分配。</p>
-<p>最后，可以虚拟化进程了。进程因爲页表的存在，不会存在相互干扰了。两个进程因爲页表与页表之间不同，映射到的地方不同，那怕虚拟地址相同，物理内存上也不会相同，它们之间彷彿有一道牆，阻止它们相互侵犯。</p>
-<h2 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h2><p>没错，地址也可以虚拟化。还有多少东西可以虚拟化呢？真的好期待啊。</p>
-
+        <h2 id="没有虚拟内存带来的问题"><a href="#没有虚拟内存带来的问题" class="headerlink" title="没有虚拟内存带来的问题"></a>没有虚拟内存带来的问题</h2><p>我们在运行程序时，总希望内存越大越好，这样可以运行的程序也可以越来越多，越来越大。但现实是，这样做是有很多成本的。最简单的成本就是钱。过去，爲了解决这个问题，人们写程序时，会考虑到内存大小，如果自己写的程序大过内存，那麽还要做一些工作，比如：想办法，只加载一部分代码，当有更多的需要时，再加载更多。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/17/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -404,76 +419,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>在实习了一个星期之后，对接口有了更深入的思考。</p>
+        <p>在实习了一个星期之后，对接口有了更深入的思考。</p>
 <p>写代码对我而言只是一种兴趣。由于没有任何人对我做出任何要求，很多时候，我只要求将东西写出来就可以了。每当学到新的东西，就一股脑地加入其中，久而久之，我再翻看过去写的代码，只觉得冗长且难看。好在，这些东西大多数时候只有我一个人看，写成什么样都无所谓了。</p>
-<p>但现在马上毕业，也不能再任性下去。我得学会和他人合作，共同写出每一个人都能理解的东西。重要的是，当其中一个人离开时，新加入的人可以理解，并很快加入其中。</p>
-<p>当然，站在老板的角度上，这样就可以压榨更多员工了。但站在更大的角度上看，我们所做出来的东西，如果能被世界的人理解，并使用，共同创造出一个东西。这一个东西，不会因为时间，空间，乃至人的变化，而变化，它可以被每一个人所继承，所共有，并传递下去，实现永恒，这不是很棒吗？</p>
-<p>过去我一直一个人在战斗，虽然也会用大佬做的库，但它们只是我实现目标的工具，并非过程。而这一次，要实现的就是工具。简单来讲，我的职责，从调用者，变成了服务者。既然职责发生了转变，那么思维也要跟着发生转变。</p>
-<p>于是，我开始理解，过去无法理解的事情。</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>JAVA 的面向对象中，有一个叫做接口（Interface）的东西。接口很像一个类，又与类不同，比如，接口禁止申明函数的过程。就比如下面的写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface mouth&#123;</span><br><span class="line">    public void sayHello();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;下面的写法是禁止的</span><br><span class="line"></span><br><span class="line">interface mouth&#123;</span><br><span class="line">    public void sayHello()&#123;</span><br><span class="line">      return &quot;Hello&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那函数没有具体的功能，那它就没用了吗？</p>
-<p>不，是有用的，它可以被其它类实现 (implements)，然后赋予这个函数功能。比如下面的写法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Chinese implements mouth&#123;</span><br><span class="line">    public void sayHello()&#123;</span><br><span class="line">        return &quot;你好！&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Japenese implements mouth&#123;</span><br><span class="line">    public void sayHello()&#123;</span><br><span class="line">        return &quot;konijiwa！&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>很奇怪吧。明明在最开始就可以做到的事情，为什么要在后面用另一个类实现？ 明明可以用继承的方式，为什么要多加一个接口的概念？</p>
-<h2 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h2><p>在现实生活中，充斥着大量的约定。比如说，去买早点，大家都约定好，你给我钱，我给你吃的；手机买回来，充电插头一定是双脚的；无论在哪买的 USB，都能插上电脑，传输数据；无论什么城市，过马路时，红灯都得停下来。。。</p>
-<p>小到微观世界，大到整个宇宙，大大小小都围绕着某种约定，做着正确的事。一旦违背了约定，定会遭到惩罚。</p>
-<p>仔细思考一下约定这种行为，它必定是由多个人共同承担起。假如世界上只有一个人，他做什么事都不会违背约定。</p>
-<p>接口其实也是一种约定。用更准确的说法，便是「协议」(protocol)。</p>
-<p>嘴巴有个功能就是说话，至于怎么说，说什么，每个人都有不同的实现方式。中国人有中国人的说法，日本人有日本人的说法，但它们都要满足，会说这个功能（这里只是为了方便解释，就不要问我哑巴怎么办）。</p>
-<p>在多人合作时，这样就很方便。只要有接口就好了，具体怎么做就看你的了。但无论你怎么做，都不能违返这个接口定下的规则。</p>
-<h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><p>当我们尝试将接口变成核心时，就会发现，很多事情变得简单了。</p>
-<p>首先，我不再关心调用者实现，调用者也不再关心我的实现。比如有调用者用了我的类做了点事情。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class user&#123;</span><br><span class="line">    public function do(Human H)&#123;</span><br><span class="line">        H.sayHello();</span><br><span class="line">        H.sayGoodbye();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里的 H，调用者可以放 Chinese 实例，可以放 Japenese 实例，可以放 American 实例，都无所谓。只要他传进来的东西满足</p>
-<ul>
-<li>是 Human 类</li>
-<li>实现了统一的接口</li>
-</ul>
-<p>那就没任何问题。</p>
-<p>与之而来的是，我这边的任务也会很轻松。我定义了接口之后，就可以在满足接口的定义下，任意实现功能。</p>
-<p>调用者和服务者之间的联系变弱了，但也更强硬了，我们不一定需要你，但我们都必须遵守约定，遵守接口。</p>
-<h2 id="云服务"><a href="#云服务" class="headerlink" title="云服务"></a>云服务</h2><p>现在出现的大量的云服务，也是建立在这个基础之上。如果有兴趣，可以上腾讯云或者阿里云的网站上看看。</p>
-<p><img src="1564906395080.png" alt="腾讯云服务"></p>
-<p>如果想要人脸识别的功能，你大可不必亲自实现，只要满足了接口的要求，花点小钱，就可以实现。</p>
-<h2 id="更深一点的内容"><a href="#更深一点的内容" class="headerlink" title="更深一点的内容"></a>更深一点的内容</h2><p>如果只是想了解接口，上面的东西已经足够了。但如果想要来点更深的东西，就继续往下看吧。</p>
-<h3 id="依赖注入-Dependency-Injection"><a href="#依赖注入-Dependency-Injection" class="headerlink" title="依赖注入(Dependency Injection)"></a>依赖注入(Dependency Injection)</h3><p>依賴注入是我在看 Spring 框架时，遇到的第一个词。</p>
-<p>之所以用接口，是因为我们在编程时，不得不面对一个问题：依赖。</p>
-<p>在实际工作中，经常就会写出这样的东西。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public BMW_wheel&#123;</span><br><span class="line">  public void go&#123;</span><br><span class="line">      System.out.print(&quot;BMW&#39;s wheels working!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public BMW_Car &#123;</span><br><span class="line">  Wheel BMW_Wheel;</span><br><span class="line">  public BWM_Car()&#123;</span><br><span class="line">    BMW_Wheel &#x3D; new BMW_Wheel();</span><br><span class="line">  &#125;</span><br><span class="line">  public void BMM_Run()&#123;</span><br><span class="line">     BMW_Wheel.go();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Person&#123;</span><br><span class="line">  public void drive()&#123;</span><br><span class="line">     BMW_Car Car &#x3D; new BMW_Car();</span><br><span class="line">     Car.BMW_Run();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码是没任何问题，事实上，也是可以这么写的。但问题在于，假如我做出的这个东西不是我一个人用，而是分享给很多人用，有的人不想用宝马的轮子，而是想用奔驰的轮子，有的人想改用自己家造的轮子。那么每个人都要读懂上面我写的东西，改得 Car 的实例化过程，最后才能正常的用自己设定的轮子跑起来。如果，假设，在 BMW_Car 又被另一个 Person 类依赖，Person 类被 Company 依赖，那么改动一小点，都会引发滚雪球式的灾难。</p>
-<p>而解决这一个问题的思想，就是改变我们的想法，将依赖关系倒转过来。</p>
-<p>如果我在写上面的类时，留有一些空隙，问题就会变得很简单。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface Car&#123;</span><br><span class="line">  public void Run(Wheel wheel);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同时，轮子类也做个接口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface Wheel&#123;</span><br><span class="line">  public void go();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>之后，实现车类。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public BMW_Car implement Car&#123;</span><br><span class="line">  Wheel wheel;</span><br><span class="line">  public void BMW_Car(Wheel wheel)&#123;</span><br><span class="line">      this.wheel &#x3D; wheel;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public void Run()&#123;</span><br><span class="line">    this.wheel.go();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Tesla implements Car&#123;</span><br><span class="line">  Wheel wheel;</span><br><span class="line"></span><br><span class="line">  public void Tesla(Wheel wheel)&#123;</span><br><span class="line">    this.wheel &#x3D; wheel;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public void Run()&#123;</span><br><span class="line">    this.wheel.go();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过接口，轮子类和车轮之间的耦合度降低了。在上面，我不再关心这辆宝马车用的是什么轮子。我要的只是轮子，你只要满足轮子接口的东西就可以了。</p>
-<p>你完全可以写成下面的代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">  public void driving()&#123;</span><br><span class="line">      Car BMW_Car &#x3D; new BMW_Car()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>（为什么不用万能的 Python 来写这段代码？那是因为 Python 是鸭子类型啊，不需要接口）</p>
-<h3 id="REST-风格"><a href="#REST-风格" class="headerlink" title="REST 风格"></a>REST 风格</h3><p>解决依赖的方法除了在代码上，我们还可以通过使用更成熟的思想。</p>
-<p>在 2000 年，Fielding 大佬的博士论文的第五章，介绍了一种架构风格，叫作 REST（Representation state transfer）。这种风格，如今应用于各大应用中。</p>
-<p>简单来说，客户端与服务器交流时，每次请求都与上一次无关。换而言之，每一次请求都不依赖于上一次请求。这样，我们将耦合降到了最低。当我需要资源时，只需要向服务器请求，我只知道向哪一个 URL 请求，根本无需知道我所请求的是分布式系统中的具体的哪一个，因为每一次请求对它们而言，都是崭新的。这样，不需要担心可拓展性。</p>
-<p>同时，RESTful 带来的好处还有：改善了可见性。由于每一次请求得到的数据都不应该超过一次请求所得到的数据，因此数据的完整性得到了保证。同时，提升了可靠性。如果请求出了问题，我们也只需要恢复一次请求便可以了。</p>
-<p>通过这一风格设计出来的接口，在通用性上会大大增强。</p>
-<h3 id="MASHUP-应用"><a href="#MASHUP-应用" class="headerlink" title="MASHUP 应用"></a>MASHUP 应用</h3><p>当接口设计得足够多，与之而来的，应用上的发展也开始了。</p>
-<p>mashup 最早起源于音乐界，将不同的音乐混合在一起的演出方式。在如今的 IT 界中，它表示一种应用做法：组合不同的 WEB 服务，合成一个应用。</p>
-<p>举个例子。 2018年，GOOGLE 公开了 GOOGLE MAP 的数据接口。因此，每个人都可以用它，和其它服务，比如天气服务接口，做出一个新的应用，在地图上显示每个城市的天气，或者做更有趣的，比如抄袭 Pokemon GO，做个捉妖怪的游戏。</p>
-<p>mashup 的组成分成三部分。一部分是服务提供商(者)，一部分是 mashup 站点，一部分是客户端。这三者每一部分都是可替代，我可以用不同服务商提供的 api，这个应用也可是另一个人来做，至于服务端，大多数是基于浏览器，你换成哪一个浏览器都可以。于是，mashup 属于松散耦合，可以说，是利用接口最好的诠释。</p>
-<hr>
-<p>又说了一大堆无用的东西。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/08/04/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -528,83 +480,6 @@
 
 
   
-    <article id="post-初识-YAF-框架-和-MVC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/14/%E5%88%9D%E8%AF%86-YAF-%E6%A1%86%E6%9E%B6-%E5%92%8C-MVC/" class="article-date">
-  <time datetime="2019-07-13T16:00:00.000Z" itemprop="datePublished">2019-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/%E5%88%9D%E8%AF%86-YAF-%E6%A1%86%E6%9E%B6-%E5%92%8C-MVC/">初识 YAF 框架 和 MVC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是我第一次使用 PHP 做开发。</p>
-<p>因为 PHP 的名声不够好，加之开发环境不是很方便（至少要懂得 WEB 相关的东西，才能开始学习）。于是也没怎么关注。但是现在有任务用到 YAF 框架，基于 PHP 做开发，也得懂一点东西了。</p>
-<p>至于为什么写这个，主要还是因为官方文档太不友好了。初学者上去看，只会先被复杂烦锁的配制文件难住，然后找不到方向，最后迷失在安装框架和配制上。有这点时间，用 python 怕是已经搞定一个网站了。于是我想，给想要尝试用 yaf 入门网页开发的新人，做点小工作，我说的不全，但会帮助你理解一个网站的大概设计。当然我也不保证自己写的东西能让人看懂就是了。</p>
-<p>首先，YAF 的框架结构树如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+ public </span><br><span class="line">  |- index.php &#x2F;&#x2F; 入口文件 </span><br><span class="line">  |- .htaccess &#x2F;&#x2F; 重写规则 </span><br><span class="line">  |+ css </span><br><span class="line">  |+ img </span><br><span class="line">  |+ js </span><br><span class="line">+ conf </span><br><span class="line">  |- application.ini &#x2F;&#x2F; 配置文件 </span><br><span class="line">+ application </span><br><span class="line">  |+ controllers </span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">  |+ views </span><br><span class="line">      |+ index &#x2F;&#x2F; 默认视图目录 </span><br><span class="line">        |- index.phtml &#x2F;&#x2F; 默认视图 </span><br><span class="line">  |+ modules &#x2F;&#x2F; 其他模块 </span><br><span class="line">  |+ library &#x2F;&#x2F; 本地类库 </span><br><span class="line">  |+ models &#x2F;&#x2F; model目录 </span><br><span class="line">  |+ plugins &#x2F;&#x2F; 插件目录</span><br></pre></td></tr></table></figure>
-
-<p>注意，前面有 + 号代表目录，- 号代表文件。让我们先把焦点放在 application 这个目录上。<br>application</p>
-<p>这个目录算是最主要的文件目录了。模型（Model）、控制器（Control）还有视图（View）都放在这里。</p>
-<p>模型（Model），如果用更常见的说法，它可能与对象更加接近。我个人无法完全描述这个东西。但我们得知道一样，数据是计算机中最重要的东西，而 Model 就是描述数据的东西。</p>
-<p>所谓的控制器（Control），就是网页的行为。比如，我们的其它函数从数据库里得到数据，通过控制器，将数据交给网页，让其渲染。又比如，网页表单提交上来时，要有一个函数接收数据，并存到数据库上，或者做其它操作。有时，这种函数也就做 API 接口。它连接着 模型 和 视图，作为中间的状态。</p>
-<p>再之，是视图（View），也就是我们的 HTML 页面。</p>
-<p>将一个项目分成上面三部分是有必要的，当然，可以不分，但这不利于合作。分开之后，我们负责页面的，只管页面就好了，它需要数据就去向 控制器 取，而 模型 也不用管页面，它做它的事，控制器会帮忙传数据。这样，一个项目就可以分给三部分人处理。</p>
-<p>回到 YAF 框架上。 YAF 框架完全遵循着 MVC 原则做的设计。</p>
-<p>再看上面 YAF 框架的其中三个目录。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 控制器 </span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br><span class="line">  |+ models &#x2F;&#x2F; model目录</span><br></pre></td></tr></table></figure>
-
-<p>这个框架就包含了上面提到的 MVC 三个组成部分。当然，了解完上面的东西还不够。我们先来考虑一下几个简单的小问题。</p>
-<p>第一，用户要怎么访问我们的网页？假设我们的网页写好了，用户要在浏览器里输入什么，才能访问到？</p>
-<p>第二，我们要怎么区分不同的页面？一个网站不可能只有一个网页，每个网页做的事情不同，用户不可能只停留在一个网页上。登录的页面、个人主页和好友页面，显然不是同一个东西，那么怎么区分它们，让我们输入不同的地址进入不同的页面？</p>
-<p>第三，我们要怎么把数据传到网页上？比如，当你登录之后，右上角会显示你的名字，名字很明显是从数据库里传来，传到控制器，然后传到页面，这中间是怎么操作的？</p>
-<p>第四，我们要怎么保存用户的状态？如果之前不了解 HTTP 协议，现在大概说一下，HTTP 协议是不会保存的。也就是说，在没有做过其它工作的情况下，你换到另一个页面，那一个页面是不知道你在这个页面做个什么，就算同一个页面，一刷新，它也不知道你做过什么。如果你在这个页面登录了，切到下一个页面，一切都消失了，那就很糟糕。那么该怎么做才能保留信息？</p>
-<p>篇符有限，先讨论前三个问题，后面一个问题下一篇文章再讨论。</p>
-<p>先前有说过，controllers 连接着 views 和 models。现在，先关注 controllers 和 views 的关系。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 默认视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br></pre></td></tr></table></figure>
-
-<p>还是这个目录。可以发现，默认情况下，controllers 里的文件 Index.php 和 views 下的目录 index 字母是一样的。在这种情况下，Index 这个控制器就和 index 目录连在了一起。 控制器 Index.php 的代码如下:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认 Action</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">indexAction</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;getView()-&gt;assign(<span class="string">"content"</span>, <span class="string">"Hello World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">index.phtml 代码如下：</span><br><span class="line"></span><br><span class="line">&lt;html&gt;  </span><br><span class="line">&lt;head&gt;  </span><br><span class="line">    &lt;title&gt;Hello World&lt;/title&gt;  </span><br><span class="line">&lt;/head&gt;  </span><br><span class="line">&lt;body&gt;  </span><br><span class="line">    <span class="meta">&lt;?php</span> <span class="keyword">echo</span> $content;<span class="meta">?&gt;</span>  </span><br><span class="line">&lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>类里只有一个函数，indexAction 这是 yaf 的默认命名方式。index 对应着视图 index.phtml。这样，当我们访问 http://域名/项目名/index/index 时，就能看到 index.phtml 里的东西了。同理，有这么一个目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">    |- Login.php &#x2F;&#x2F; 新的控制器 </span><br><span class="line"></span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 默认视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br><span class="line">    |+ login &#x2F;&#x2F; 新的视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 新的视图</span><br></pre></td></tr></table></figure>
-
-<p>那么访问 http://域名/项目名/login/index 就能访问到新的视图。</p>
-<p>如果这个新的图里，还有另一个页面。finished.phtml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">    |- Login.php &#x2F;&#x2F; 新的控制器 </span><br><span class="line"></span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 默认视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br><span class="line">    |+ login &#x2F;&#x2F; 新的视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 新的视图</span><br><span class="line">      |- finished.phtml &#x2F;&#x2F; 新的视图</span><br></pre></td></tr></table></figure>
-
-<p>那么只要在 Login.php 里加一个新函数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> <span class="keyword">extends</span> <span class="title">AbstractController</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  indexAction()  </span><br><span class="line"> &#123;</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">$this</span>-&gt;getView()-&gt;assign(<span class="string">"content"</span>, <span class="string">"Hello Login"</span>);  </span><br><span class="line">  </span><br><span class="line"> &#125;  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">indexAction</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"> </span>&#123; </span><br><span class="line"> </span><br><span class="line">  <span class="keyword">$this</span>-&gt;getView()-&gt;assign(<span class="string">"content"</span>, <span class="string">"Finishied!"</span>);  </span><br><span class="line">  </span><br><span class="line"> &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么再访问 http://域名/项目名/login/finished 就能访问到新的视图。</p>
-<p>就这么简单。函数里那一条唯一的代码，就是设定 一个名为 content 的变量，其值为 后面的字符串，并把它传到 phtml 上，再由 PHP 渲染。</p>
-<p>前三个问题就解决完了！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/14/%E5%88%9D%E8%AF%86-YAF-%E6%A1%86%E6%9E%B6-%E5%92%8C-MVC/" data-id="ck7h71kyi0000633xd5c18cuf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -628,7 +503,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -639,6 +514,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/03/07/%E6%9F%90%E6%98%8E%E6%98%9F%E4%B8%8E%E4%BA%9A%E6%96%87%E5%8C%96%E5%B9%B3%E5%8F%B0/">某明星与亚文化平台</a>
+          </li>
         
           <li>
             <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
@@ -654,10 +533,6 @@
         
           <li>
             <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/02/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">调度算法（一）</a>
           </li>
         
       </ul>

@@ -68,6 +68,83 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-初识-YAF-框架-和-MVC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/14/%E5%88%9D%E8%AF%86-YAF-%E6%A1%86%E6%9E%B6-%E5%92%8C-MVC/" class="article-date">
+  <time datetime="2019-07-13T16:00:00.000Z" itemprop="datePublished">2019-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/14/%E5%88%9D%E8%AF%86-YAF-%E6%A1%86%E6%9E%B6-%E5%92%8C-MVC/">初识 YAF 框架 和 MVC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我第一次使用 PHP 做开发。</p>
+<p>因为 PHP 的名声不够好，加之开发环境不是很方便（至少要懂得 WEB 相关的东西，才能开始学习）。于是也没怎么关注。但是现在有任务用到 YAF 框架，基于 PHP 做开发，也得懂一点东西了。</p>
+<p>至于为什么写这个，主要还是因为官方文档太不友好了。初学者上去看，只会先被复杂烦锁的配制文件难住，然后找不到方向，最后迷失在安装框架和配制上。有这点时间，用 python 怕是已经搞定一个网站了。于是我想，给想要尝试用 yaf 入门网页开发的新人，做点小工作，我说的不全，但会帮助你理解一个网站的大概设计。当然我也不保证自己写的东西能让人看懂就是了。</p>
+<p>首先，YAF 的框架结构树如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+ public </span><br><span class="line">  |- index.php &#x2F;&#x2F; 入口文件 </span><br><span class="line">  |- .htaccess &#x2F;&#x2F; 重写规则 </span><br><span class="line">  |+ css </span><br><span class="line">  |+ img </span><br><span class="line">  |+ js </span><br><span class="line">+ conf </span><br><span class="line">  |- application.ini &#x2F;&#x2F; 配置文件 </span><br><span class="line">+ application </span><br><span class="line">  |+ controllers </span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">  |+ views </span><br><span class="line">      |+ index &#x2F;&#x2F; 默认视图目录 </span><br><span class="line">        |- index.phtml &#x2F;&#x2F; 默认视图 </span><br><span class="line">  |+ modules &#x2F;&#x2F; 其他模块 </span><br><span class="line">  |+ library &#x2F;&#x2F; 本地类库 </span><br><span class="line">  |+ models &#x2F;&#x2F; model目录 </span><br><span class="line">  |+ plugins &#x2F;&#x2F; 插件目录</span><br></pre></td></tr></table></figure>
+
+<p>注意，前面有 + 号代表目录，- 号代表文件。让我们先把焦点放在 application 这个目录上。<br>application</p>
+<p>这个目录算是最主要的文件目录了。模型（Model）、控制器（Control）还有视图（View）都放在这里。</p>
+<p>模型（Model），如果用更常见的说法，它可能与对象更加接近。我个人无法完全描述这个东西。但我们得知道一样，数据是计算机中最重要的东西，而 Model 就是描述数据的东西。</p>
+<p>所谓的控制器（Control），就是网页的行为。比如，我们的其它函数从数据库里得到数据，通过控制器，将数据交给网页，让其渲染。又比如，网页表单提交上来时，要有一个函数接收数据，并存到数据库上，或者做其它操作。有时，这种函数也就做 API 接口。它连接着 模型 和 视图，作为中间的状态。</p>
+<p>再之，是视图（View），也就是我们的 HTML 页面。</p>
+<p>将一个项目分成上面三部分是有必要的，当然，可以不分，但这不利于合作。分开之后，我们负责页面的，只管页面就好了，它需要数据就去向 控制器 取，而 模型 也不用管页面，它做它的事，控制器会帮忙传数据。这样，一个项目就可以分给三部分人处理。</p>
+<p>回到 YAF 框架上。 YAF 框架完全遵循着 MVC 原则做的设计。</p>
+<p>再看上面 YAF 框架的其中三个目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 控制器 </span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br><span class="line">  |+ models &#x2F;&#x2F; model目录</span><br></pre></td></tr></table></figure>
+
+<p>这个框架就包含了上面提到的 MVC 三个组成部分。当然，了解完上面的东西还不够。我们先来考虑一下几个简单的小问题。</p>
+<p>第一，用户要怎么访问我们的网页？假设我们的网页写好了，用户要在浏览器里输入什么，才能访问到？</p>
+<p>第二，我们要怎么区分不同的页面？一个网站不可能只有一个网页，每个网页做的事情不同，用户不可能只停留在一个网页上。登录的页面、个人主页和好友页面，显然不是同一个东西，那么怎么区分它们，让我们输入不同的地址进入不同的页面？</p>
+<p>第三，我们要怎么把数据传到网页上？比如，当你登录之后，右上角会显示你的名字，名字很明显是从数据库里传来，传到控制器，然后传到页面，这中间是怎么操作的？</p>
+<p>第四，我们要怎么保存用户的状态？如果之前不了解 HTTP 协议，现在大概说一下，HTTP 协议是不会保存的。也就是说，在没有做过其它工作的情况下，你换到另一个页面，那一个页面是不知道你在这个页面做个什么，就算同一个页面，一刷新，它也不知道你做过什么。如果你在这个页面登录了，切到下一个页面，一切都消失了，那就很糟糕。那么该怎么做才能保留信息？</p>
+<p>篇符有限，先讨论前三个问题，后面一个问题下一篇文章再讨论。</p>
+<p>先前有说过，controllers 连接着 views 和 models。现在，先关注 controllers 和 views 的关系。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 默认视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br></pre></td></tr></table></figure>
+
+<p>还是这个目录。可以发现，默认情况下，controllers 里的文件 Index.php 和 views 下的目录 index 字母是一样的。在这种情况下，Index 这个控制器就和 index 目录连在了一起。 控制器 Index.php 的代码如下:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认 Action</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">indexAction</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;getView()-&gt;assign(<span class="string">"content"</span>, <span class="string">"Hello World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">index.phtml 代码如下：</span><br><span class="line"></span><br><span class="line">&lt;html&gt;  </span><br><span class="line">&lt;head&gt;  </span><br><span class="line">    &lt;title&gt;Hello World&lt;/title&gt;  </span><br><span class="line">&lt;/head&gt;  </span><br><span class="line">&lt;body&gt;  </span><br><span class="line">    <span class="meta">&lt;?php</span> <span class="keyword">echo</span> $content;<span class="meta">?&gt;</span>  </span><br><span class="line">&lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>类里只有一个函数，indexAction 这是 yaf 的默认命名方式。index 对应着视图 index.phtml。这样，当我们访问 http://域名/项目名/index/index 时，就能看到 index.phtml 里的东西了。同理，有这么一个目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">    |- Login.php &#x2F;&#x2F; 新的控制器 </span><br><span class="line"></span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 默认视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br><span class="line">    |+ login &#x2F;&#x2F; 新的视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 新的视图</span><br></pre></td></tr></table></figure>
+
+<p>那么访问 http://域名/项目名/login/index 就能访问到新的视图。</p>
+<p>如果这个新的图里，还有另一个页面。finished.phtml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+ application </span><br><span class="line">  |+ controllers</span><br><span class="line">    |- Index.php &#x2F;&#x2F; 默认控制器 </span><br><span class="line">    |- Login.php &#x2F;&#x2F; 新的控制器 </span><br><span class="line"></span><br><span class="line">  |+ views </span><br><span class="line">    |+ index &#x2F;&#x2F; 默认视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 默认视图</span><br><span class="line">    |+ login &#x2F;&#x2F; 新的视图目录</span><br><span class="line">      |- index.phtml &#x2F;&#x2F; 新的视图</span><br><span class="line">      |- finished.phtml &#x2F;&#x2F; 新的视图</span><br></pre></td></tr></table></figure>
+
+<p>那么只要在 Login.php 里加一个新函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> <span class="keyword">extends</span> <span class="title">AbstractController</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  indexAction()  </span><br><span class="line"> &#123;</span><br><span class="line">   </span><br><span class="line">  <span class="keyword">$this</span>-&gt;getView()-&gt;assign(<span class="string">"content"</span>, <span class="string">"Hello Login"</span>);  </span><br><span class="line">  </span><br><span class="line"> &#125;  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">indexAction</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"> </span>&#123; </span><br><span class="line"> </span><br><span class="line">  <span class="keyword">$this</span>-&gt;getView()-&gt;assign(<span class="string">"content"</span>, <span class="string">"Finishied!"</span>);  </span><br><span class="line">  </span><br><span class="line"> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么再访问 http://域名/项目名/login/finished 就能访问到新的视图。</p>
+<p>就这么简单。函数里那一条唯一的代码，就是设定 一个名为 content 的变量，其值为 后面的字符串，并把它传到 phtml 上，再由 PHP 渲染。</p>
+<p>前三个问题就解决完了！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/14/%E5%88%9D%E8%AF%86-YAF-%E6%A1%86%E6%9E%B6-%E5%92%8C-MVC/" data-id="ck7h71kyi0000633xd5c18cuf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-我不喜歡安卓" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/06/02/%E6%88%91%E4%B8%8D%E5%96%9C%E6%AD%A1%E5%AE%89%E5%8D%93/" class="article-date">
@@ -131,17 +208,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<p>计算模拟考试前，老师发了一份复习题纲。用的是普通的文本写的，一些公式看上去很乱。</p>
+        <p>计算模拟考试前，老师发了一份复习题纲。用的是普通的文本写的，一些公式看上去很乱。</p>
 <p>于是边复习题纲，边修改，用 Latex 语法重新写了部分的公式，并做了点排版（写作者的天性 :P ）。总之，改得更容易看了一点。</p>
-<p><img src="1559472330222.png" alt=""></p>
-<p><img src="1559472290996.png" alt=""></p>
-<p><img src="1559472386325.png" alt=""></p>
-<p><img src="1559472409652.png" alt=""></p>
-<p>只有一个人看也太无趣，放出来，以后谁有需要，谁就拿走好了。</p>
-<p><a href="https://files.catbox.moe/hy6qar.pdf" target="_blank" rel="noopener">PDF</a></p>
-<p><a href="https://files.catbox.moe/9z4wcm.html" target="_blank" rel="noopener">HTML</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/06/02/%E5%81%9A%E9%BB%9E%E5%B0%8F%E5%B7%A5%E4%BD%9C/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -256,7 +329,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
     </div>
   </div>
 
@@ -267,6 +340,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/03/07/%E6%9F%90%E6%98%8E%E6%98%9F%E4%B8%8E%E4%BA%9A%E6%96%87%E5%8C%96%E5%B9%B3%E5%8F%B0/">某明星与亚文化平台</a>
+          </li>
         
           <li>
             <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
@@ -282,10 +359,6 @@
         
           <li>
             <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/02/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">调度算法（一）</a>
           </li>
         
       </ul>
