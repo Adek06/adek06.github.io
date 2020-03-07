@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: 我是游先生
+subtitle: '爱玩游戏的游先生'
 description: ''
 keywords:
-author: John Doe
-language: en
+author: 游先生
+language: zh
 timezone: ''
 
 # URL
@@ -98,6 +98,10 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repository: https://github.com/Adek06/adek06.github.io.git
+  branch: master
+
+- type: git
+  repository: https://gitee.com/adek06/adek06.git
   branch: master
