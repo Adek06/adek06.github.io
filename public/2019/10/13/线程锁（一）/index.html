@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>线程锁（一） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以前在阅读有关于 Python 性能的文章时，总是有人提到「僞线程」和「线程锁」这两个词。由于基础不够，当有人提到 Python 性能时，我也只能学着他们，说「Python 是僞线程啦！不行啦！」之类的话。但是，印在我股子里的装B劲，还是渴望有一天能理解，究竟何爲「锁」？爲何需要「锁」？如何「锁」？以及「GIL的问题」。 何爲锁？ 如上面这张图所展示的，在运行多线程 Python 程序时，CPU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程锁（一）">
+<meta property="og:url" content="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="以前在阅读有关于 Python 性能的文章时，总是有人提到「僞线程」和「线程锁」这两个词。由于基础不够，当有人提到 Python 性能时，我也只能学着他们，说「Python 是僞线程啦！不行啦！」之类的话。但是，印在我股子里的装B劲，还是渴望有一天能理解，究竟何爲「锁」？爲何需要「锁」？如何「锁」？以及「GIL的问题」。 何爲锁？ 如上面这张图所展示的，在运行多线程 Python 程序时，CPU">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570974760163.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570974768741.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570974768743.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570974769063.png">
+<meta property="article:published_time" content="2019-10-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-07T06:48:03.802Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/1570974760163.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-线程锁（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2019-10-12T16:00:00.000Z" itemprop="datePublished">2019-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      线程锁（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前在阅读有关于 Python 性能的文章时，总是有人提到「僞线程」和「线程锁」这两个词。由于基础不够，当有人提到 Python 性能时，我也只能学着他们，说「Python 是僞线程啦！不行啦！」之类的话。但是，印在我股子里的装B劲，还是渴望有一天能理解，究竟何爲「锁」？爲何需要「锁」？如何「锁」？以及「GIL的问题」。</p>
+<h2 id="何爲锁？"><a href="#何爲锁？" class="headerlink" title="何爲锁？"></a>何爲锁？</h2><p><img src="1570974760163.png" alt=""></p>
+<p>如上面这张图所展示的，在运行多线程 Python 程序时，CPU 内只允许一个线程运行，开始运行其中一个线程时，一定要将「锁」住，不让其它线程运行。当要运行其它线程时，会打开锁，然后再执行第二个线程。如此一来，同一个 CPU 里，只允许一个线程运行。</p>
+<h2 id="爲何需要锁？"><a href="#爲何需要锁？" class="headerlink" title="爲何需要锁？"></a>爲何需要锁？</h2><p>当然，你也许会想：正常情况下，单核 CPU 也是一次运行一个线程，然后系统中断去执行其它线程，锁的意义何在啊？</p>
+<p>的确，系统中断是现代系统的基础，但也因爲它的存在，不得不使用锁。</p>
+<p>举个简单明了的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">1 #include &lt;stdio.h&gt;</span><br><span class="line">2 #include &lt;pthread.h&gt;</span><br><span class="line">3 #include &quot;mythreads.h&quot;</span><br><span class="line">4</span><br><span class="line">5 static volatile int counter &#x3D; 0;</span><br><span class="line">6</span><br><span class="line">7 &#x2F;&#x2F;</span><br><span class="line">8 &#x2F;&#x2F; mythread()</span><br><span class="line">9 &#x2F;&#x2F;</span><br><span class="line">10 &#x2F;&#x2F; 用循环将1加到1e7</span><br><span class="line">11 &#x2F;&#x2F; 这不是展示如何使用线程</span><br><span class="line">12 &#x2F;&#x2F; 而是表达线程的问题</span><br><span class="line">13 &#x2F;&#x2F;</span><br><span class="line">14 void *</span><br><span class="line">15 mythread(void * arg)</span><br><span class="line">16 &#123;</span><br><span class="line">17 printf(&quot;%s: begin\n&quot;, (char * ) arg);</span><br><span class="line">18 int i;</span><br><span class="line">19 for (i &#x3D; 0; i &lt; 1e7; i++) &#123;</span><br><span class="line">20 counter &#x3D; counter + 1;</span><br><span class="line">21 &#125;</span><br><span class="line">22 printf(&quot;%s: done\n&quot;, (char * ) arg);</span><br><span class="line">23 return NULL;</span><br><span class="line">24 &#125;</span><br><span class="line">25</span><br><span class="line">26 &#x2F;&#x2F;</span><br><span class="line">27 &#x2F;&#x2F; main()</span><br><span class="line">28 &#x2F;&#x2F;</span><br><span class="line">29 &#x2F;&#x2F; 运行两个线程</span><br><span class="line">30 &#x2F;&#x2F; 然后等待它们完成（Pthread_join）</span><br><span class="line">31 &#x2F;&#x2F;</span><br><span class="line">32 int</span><br><span class="line">33 main(int argc, char * argv[])</span><br><span class="line">34 &#123;</span><br><span class="line">35 pthread_t p1, p2;</span><br><span class="line">36 printf(&quot;main: begin (counter &#x3D; %d)\n&quot;, counter);</span><br><span class="line">37 Pthread_create(&amp;p1, NULL, mythread, &quot;A&quot;);</span><br><span class="line">38 Pthread_create(&amp;p2, NULL, mythread, &quot;B&quot;);</span><br><span class="line">39</span><br><span class="line">40 &#x2F;&#x2F; join waits for the threads to finish</span><br><span class="line">41 Pthread_join(p1, NULL);</span><br><span class="line">42 Pthread_join(p2, NULL);</span><br><span class="line">43 printf(&quot;main: done with both (counter &#x3D; %d)\n&quot;, counter);</span><br><span class="line">44 return 0;</span><br><span class="line">45 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的这段代码，使用了两个线程操作一个全局变量 counter，每个线程都将它加到 1e7。可以预见，它最后的结果将是 2e7。可是，实际运行下来，并非如此。</p>
+<p><img src="1570974768741.png" alt=""></p>
+<p><img src="1570974768743.png" alt=""></p>
+<p><img src="1570974769063.png" alt=""></p>
+<p>三次运行下来，结果完全不同。</p>
+<p>这违反了我们的直觉。明明同一段代码，操作同一个变量，爲什麽出来了完全不同的答案？</p>
+<p>原因不难解释，我们先来看看 X86 架构下 加法 操作对应的汇编代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov 0xabcde, %eax</span><br><span class="line">add 0x1, %eax</span><br><span class="line">mov %eax, 0xabcde</span><br></pre></td></tr></table></figure>
+
+<p>在计算机中，加法操作分成三部分。</p>
+<ol>
+<li>将被加数放进 寄存器</li>
+<li>对 寄存器 进行加法</li>
+<li>将 寄存器 里的数字放到原先被加数的地址</li>
+</ol>
+<p>问题也就出在这三部操作这里。抢佔调度发生时，它可不管你在做什麽。很可能就会发生下面的情景。</p>
+<ul>
+<li><p>counter = 6</p>
+</li>
+<li><p>add 0x1, %eax (此时 %eax 变成了 7，但并没有存到 counter )</p>
+</li>
+<li><p>CPU 被抢佔</p>
+</li>
+<li><p>第二个线程做完加法，counter = 7</p>
+</li>
+<li><p>恢復到第一个线程，将 %eax 的 7 存到 counter</p>
+</li>
+<li><p>counter = 7</p>
+</li>
+</ul>
+<p>注意，我们 的 counter 两次加 1，却只从 6 变到 7！</p>
+<p>正是由于系统中断，使得本应一次完成的事情，分成了两次完成，造成了数据的两次计算。这也是问题的最大根原。</p>
+<p>爲此，我们必须考虑：在进行某些操作时，避免因中断（切换上下文 ）导致原子性问题。<br>如何锁</p>
+<p>由于原子性问题是因中断导致的，在不引入新的指令前，最先想到的办法就是：在执行一些重要操作时，干掉中断！比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int faker()&#123;</span><br><span class="line">    lock();</span><br><span class="line">    a &#x3D; a + 1;</span><br><span class="line">    unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在执行 lock 之后，干掉中断，执行完后面的代码之后，再 unlock，打开中断。大略一看，是不错的想法。但别忘了我们最初设计中断的原因。是要避免下面这种情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int loop_function()&#123;</span><br><span class="line">    lock();</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        do_something();</span><br><span class="line">    &#125;</span><br><span class="line">    unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>显然，一旦某个大坏蛋（或者二伍仔）写了上面的代码，除了关机，没任何办法可以夺回 CPU 了。更何况，关掉中断只能关掉当前的处理器，其它的处理器依然会中断，然后搞坏计算结果。关掉中断真是个糟透的想法。</p>
+<p>那换个想法，但无限循环这个办法可以用在我们接下来的设计上。(爲了方便，我使用 python 改写教材里的示例，这段代码在 python 中没有多少意义)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class lock_t():</span><br><span class="line">    def init(self):</span><br><span class="line">        self.flag &#x3D; 0</span><br><span class="line"></span><br><span class="line">def init(mutex):</span><br><span class="line">    mutex.flag &#x3D; 0</span><br><span class="line">    </span><br><span class="line">def lock(mutex):</span><br><span class="line">    while (mutex.flag &#x3D;&#x3D; 1):</span><br><span class="line">        continue</span><br><span class="line">    mutex.flag &#x3D; 1</span><br><span class="line">    </span><br><span class="line">def unlock(mutex):</span><br><span class="line">    mutex.flag &#x3D; 0</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码是定义锁的「锁」、「开锁」功能。现在假设线程 A 在运行，它准备做一个原子操作，同时 mutex 对象是全局对象。那麽，代码可能是这样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def do():</span><br><span class="line">    lock(mutex) # A 线程执行到这里</span><br><span class="line">    a &#x3D; a+1</span><br><span class="line">    unlock(mutex)</span><br></pre></td></tr></table></figure>
+
+<p>此时，线程 B 夺得了 CPU 的使用权。它也会执行 lock(mutex)。但它运行到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">while (mutex.flag &#x3D;&#x3D; 1)</span><br></pre></td></tr></table></figure>
+
+<p>时，因爲 A 已经先执行了，所以 mute.flag 已经是 1 了。在 B 运行期间，因爲 mutex.flag 是 1 的原故，它被困在了 while loop 里。</p>
+<p>然后等到 A 夺回 CPU 使用权。A 做完 a = a+1，然后 unlock(mutex)，mutex.flag 变回了 0。此时，假设 B 又夺到了 CPU 使用权。mutex.flag 已经是 0 了，从 while loop 里跳出。。。</p>
+<p>就这样，一个简单的锁就完成了。</p>
+<p>但，真的一点问题也没有吗？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="ck7h80pzh0008633x5t276ads" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSRF 和 XSS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">段式存储</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">线程锁（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/">段式存储</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

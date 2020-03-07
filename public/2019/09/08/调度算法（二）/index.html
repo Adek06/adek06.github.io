@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>调度算法（二） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="说完 SJF 算法，我们再来看看一个新的问题。 如果，所有的任务并不是同时进入队列怎麽办？ SJF 算法之所以成立，很重要的一点是：我们知道队列里所有 job，并且比较了它们。假如，哪怕是 1s，两个任务先后进入了队列，我们的 CPU 可能就无法比较它们，然后找出最短的 job，SJF 算法也就崩分离析，变回了 FIFO。 爲了解决这个问题，我们在 SJF 的高度上，再做一点修改。 最先能完成的先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="调度算法（二）">
+<meta property="og:url" content="http://yoursite.com/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="说完 SJF 算法，我们再来看看一个新的问题。 如果，所有的任务并不是同时进入队列怎麽办？ SJF 算法之所以成立，很重要的一点是：我们知道队列里所有 job，并且比较了它们。假如，哪怕是 1s，两个任务先后进入了队列，我们的 CPU 可能就无法比较它们，然后找出最短的 job，SJF 算法也就崩分离析，变回了 FIFO。 爲了解决这个问题，我们在 SJF 的高度上，再做一点修改。 最先能完成的先">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-09-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-07T06:18:59.470Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-调度算法（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2019-09-07T16:00:00.000Z" itemprop="datePublished">2019-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      调度算法（二）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说完 SJF 算法，我们再来看看一个新的问题。</p>
+<p>如果，所有的任务并不是同时进入队列怎麽办？</p>
+<p>SJF 算法之所以成立，很重要的一点是：我们知道队列里所有 job，并且比较了它们。假如，哪怕是 1s，两个任务先后进入了队列，我们的 CPU 可能就无法比较它们，然后找出最短的 job，SJF 算法也就崩分离析，变回了 FIFO。</p>
+<p>爲了解决这个问题，我们在 SJF 的高度上，再做一点修改。</p>
+<h2 id="最先能完成的先来-STCF-Short-Time-to-Completion-First"><a href="#最先能完成的先来-STCF-Short-Time-to-Completion-First" class="headerlink" title="最先能完成的先来 STCF (Short Time-to-Completion First)"></a>最先能完成的先来 STCF (Short Time-to-Completion First)</h2><p>前面的两个算法，无论是 FIFO 还是 SJF 都是按顺序执行的，也就是说，队列前面的 job 没完成，是不能执行后面的 job。</p>
+<p>这点有点违背现实。我们煮水时，是不会等水煮完再去洗杯子，而应该是等水开的时间里去洗。虽然这个例子并不适用于我们要说的这个算法，但理念是相同的：我们可以中断任务，然后执行其它任务。</p>
+<p>现在任务 A 是 100s 完成，B 是 10s 完成。还是最开始的问题：如果两个 job 先后进入队列里，应该怎麽办？</p>
+<p>在 SJF 里，如果 B 先进那还好，A 先进入的话，就出问题了。因爲 A 进入时，队列里还没有任何 job，那麽 CPU 理所当然的认爲 A 是最短的任务，然后执行它。这时候再进入 B，已经是执行 A 之后的事了，B 只能乖乖等 A 执行完。那麽 Turnaroud Time 平均时间和 FIFO 是完全一样的。</p>
+<p>$ 100+1102=105s\cfrac{100+110}{2} = 105 s 2100+110​=105s $</p>
+<p>换成 STCF，如果 A 先后进入队列里，B 在进入，会发生什麽？首先，在 B 进来之前，A 是最短可完成的 job。在执行 1s 之后，队列 B 进来了。队列一看，发现 B 才是最短可完成的 job。于是 CPU 会中断，(关于 job 之前的切换，以后再提)然后换成执行 B，等 B 完成之后，再执行 A。</p>
+<p>$ 10+10+1002=60s\cfrac{10+10+100}{2} = 60 s 210+10+100​=60s $</p>
+<p>减少近一半的时间。所以，这麽优化是值得的。这几乎是我们能想到，最优的算法了吧？</p>
+<h2 id="RR（Round-Robin）"><a href="#RR（Round-Robin）" class="headerlink" title="RR（Round Robin）"></a>RR（Round Robin）</h2><p>如果之满足于 Turnaroud Time ,那麽我们的任务应该在 STCF 提出时就结束了。但我们不能只满足于 Turnaroud Time 。</p>
+<p>假想，如果有三个 job，每一 job 都要花 1000s，在第一个 job 完成之前，你得等到 1000s 之后，才能看到第二个 job 开始工作。天！我想要知道自己输进去的式子有没有问题，必须等到 1000s 后，才能看到第一次运行！响应太慢了！</p>
+<p>能想到最简单的办法，就是加快 STCF 的切换过程。比如，A 执行几秒，B 执行几秒，这样不停的切换就好了。这也是 Round Robin 算法的核心。</p>
+<p>不过，如果这样的法，STCF 的关键<strong>最短可完成</strong>就没了，同时，频繁切换进程也会产生很大的花销，切换得越快，花销就越多，这样是否值得？换而言之，我们 STCF 算法依然不是我们想要的，最优的，算法。</p>
+<hr>
+<h2 id="最关键的问题"><a href="#最关键的问题" class="headerlink" title="最关键的问题"></a>最关键的问题</h2><p>我们要找到一个算法，它的 <em>Turnaroud Time</em> 期望最小，同时，还要很快的响应。这才是我们的目标。</p>
+<p>还有，我们还要解决从最开始就设下的，绝对不可以忽视的，上面所有算法的根基条件。破坏这个条件，也意味着，上面的一切算法将会轰然倒塌，那就是：我们无法知道任务的运行时间。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" data-id="ck7h7ugtq0006633x4ogqai4k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          段式存储
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/02/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">调度算法（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">线程锁（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/">段式存储</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

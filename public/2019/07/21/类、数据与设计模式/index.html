@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>类、数据与设计模式 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="面向对象真是一个有趣的玩法。 与函数式的写法不同，在函数式中，数据是不可变的。比如我在最开始设定的数据，到达代码的最后，也不会发生任何变化。产生出来的东西只是它们做的映射。比如： 123$A &#x3D; 1do_someting($A)&#x2F;&#x2F;A 还是 1  但对一个类而言，它本身就代表着数据类型。而它的方法便是对这些数据的操作。 在我最近看到的一个例子里，发现这么一种有趣的操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类、数据与设计模式">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/%E7%B1%BB%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="面向对象真是一个有趣的玩法。 与函数式的写法不同，在函数式中，数据是不可变的。比如我在最开始设定的数据，到达代码的最后，也不会发生任何变化。产生出来的东西只是它们做的映射。比如： 123$A &#x3D; 1do_someting($A)&#x2F;&#x2F;A 还是 1  但对一个类而言，它本身就代表着数据类型。而它的方法便是对这些数据的操作。 在我最近看到的一个例子里，发现这么一种有趣的操作">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-03-07T05:58:59.122Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-类、数据与设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/21/%E7%B1%BB%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2019-07-20T16:00:00.000Z" itemprop="datePublished">2019-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      类、数据与设计模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面向对象真是一个有趣的玩法。</p>
+<p>与函数式的写法不同，在函数式中，数据是不可变的。比如我在最开始设定的数据，到达代码的最后，也不会发生任何变化。产生出来的东西只是它们做的映射。比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$A &#x3D; 1</span><br><span class="line">do_someting($A)</span><br><span class="line">&#x2F;&#x2F;A 还是 1</span><br></pre></td></tr></table></figure>
+
+<p>但对一个类而言，它本身就代表着数据类型。而它的方法便是对这些数据的操作。</p>
+<p>在我最近看到的一个例子里，发现这么一种有趣的操作：一个类有两个静态变量，一个变量存储着从网页上传来的 JSON。另一个变量保存着过滤的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clss A&#123;</span><br><span class="line">    static public $ajax &#x3D; array();  </span><br><span class="line">    static public $param &#x3D; array();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在其它的类文件里，就可以通过这个类保存从网页上传来的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class B&#123;</span><br><span class="line">    function __constuct()&#123;</span><br><span class="line">        if ($this-&gt;getRequest()-&gt;isXmlHttpRequest()) &#123;  </span><br><span class="line">             Yaf_Dispatcher::getInstance()-&gt;autoRender(FALSE);  </span><br><span class="line">             header(&quot;Content-type:application&#x2F;json;charset&#x3D;utf-8&quot;);  </span><br><span class="line">             $json &#x3D; file_get_contents(&quot;php:&#x2F;&#x2F;input&quot;);  </span><br><span class="line">             Filter::$ajax &#x3D; json_decode($json, true);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为是静态变量，于是，这个 A 类的变量就获得了参数。A 类的子类也得到了这个传过来的参数。于是，我们就可以用子类做一定的过滤。满足某个条件的参数，就放进 param 里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class para_Filter extends A&#123;</span><br><span class="line">    public static do_some_filter()&#123;</span><br><span class="line">        if (isset(self::$ajax[&#39;content&#39;])) &#123;</span><br><span class="line">            $content &#x3D; self::contentValid();</span><br><span class="line">            if ($banner[&#39;content&#39;] &#x3D;&#x3D; $content) &#123;</span><br><span class="line">                  echo &quot;content Error&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">            self::$param[&#39;content&#39;] &#x3D; $content;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected static function contentValid()&#123;</span><br><span class="line">        $stringLength &#x3D; mb_strlen(self::$ajax[&#39;content&#39;],&#39;utf8&#39;);</span><br><span class="line">        if ($stringLength&lt;1 || $stringLength &gt;10000)&#123;</span><br><span class="line">            $content &#x3D; false;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            $content &#x3D; self::$ajax[&#39;content&#39;];</span><br><span class="line">        &#125;</span><br><span class="line">        if (!$content)&#123;</span><br><span class="line">                echo &quot;no content Error&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return $content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 B 类的子类想要数据，那么只要从 para_Filter 那么得到就可以了。下面也就是我们主函数的部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class xx_Action extends B&#123;</span><br><span class="line">    public mian()&#123;</span><br><span class="line">        para_Filter::do_some_filter();</span><br><span class="line">        $content &#x3D; A::param[&#39;content&#39;];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public otherPost()&#123;</span><br><span class="line">        para_Filter::do_other_filter();</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这一套下来，也就大体实现了一个过滤器。如果我要的不是传上来的的 content，想要做新的拓展，那只要再创建新的函数、新的类就可以了。我不用管参数怎么来，只要知道，传过来的东西符不符合我的标准就好了。如果我过滤的标准发生了变化，只要改变 para_Filter 里的方法就好了，其它的地方可以一概不动。</p>
+<p>好玩的地方在于：可以看到，A 这个类没有方法，它就是一个数据的集合，一个数据结构。而它的子类，为它拓展了方法，但它们本身依然是数据结构。同时，它也随时在发生变化，而不是简单的映射。 虽然在我们的主函数里，没有对 A 这个类本身做过实例，也没有改变它的函数，但它在确确实实的产生了变化，而且还留在了它的基因里。</p>
+<p>因此，我把类看成数据本身，也没错吧 ：)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/21/%E7%B1%BB%E3%80%81%E6%95%B0%E6%8D%AE%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-id="ck7h758qi0001633xbc6o4nqv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/04/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          面向接口
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/14/%E5%88%9D%E8%AF%86-YAF-%E6%A1%86%E6%9E%B6-%E5%92%8C-MVC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">初识 YAF 框架 和 MVC</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/27/CSRF-%E5%92%8C-XSS/">CSRF 和 XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/%E7%BA%BF%E7%A8%8B%E9%94%81%EF%BC%88%E4%B8%80%EF%BC%89/">线程锁（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/23/%E6%AE%B5%E5%BC%8F%E5%AD%98%E5%82%A8/">段式存储</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/08/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">调度算法（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
