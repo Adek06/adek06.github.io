@@ -1,8 +1,7 @@
 ---
-layout: post
 title:  放棄過去的文章了
 date:   2019-05-30 21:17:56 +0800
-categories: 随想
+tags: 随想
 ---
 
 我真傻，真的。。。

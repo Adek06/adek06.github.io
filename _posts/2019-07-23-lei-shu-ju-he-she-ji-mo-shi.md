@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  类、数据与设计模式
-categories: 随想
+tags: 随想
 ---
 
 面向对象真是一个有趣的玩法。

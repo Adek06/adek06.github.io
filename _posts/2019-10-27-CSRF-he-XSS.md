@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  CSRF 和 XSS
-categories: 随想
+tags: 随想
 ---
 
 

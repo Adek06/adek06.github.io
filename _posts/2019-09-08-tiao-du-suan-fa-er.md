@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  调度算法（二）
-categories: 随想
+tags: 随想
 ---
 说完 SJF 算法，我们再来看看一个新的问题。
 

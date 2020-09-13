@@ -1,7 +1,6 @@
 ---
-layout: post
 title: 知识的诅咒
-categories: 随想
+tags: 随想
 ---
 
 在没人帮忙的情况下，第一次动手画原型。

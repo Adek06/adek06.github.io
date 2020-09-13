@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  对于虚拟化的执着
-categories: 随想
+tags: 随想
 ---
 
 我第一次了解到虚拟化，是在用 VM Ware 时。

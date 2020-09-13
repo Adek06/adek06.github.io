@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  面向接口
-categories: 随想
+tags: 随想
 ---
 
 在实习了一个星期之后，对接口有了更深入的思考。

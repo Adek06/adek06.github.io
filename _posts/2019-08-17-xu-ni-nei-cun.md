@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  虚拟内存
-categories: 随想
+tags: 随想
 ---
 
 没有虚拟内存带来的问题

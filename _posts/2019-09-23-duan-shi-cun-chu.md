@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  段式存储
-categories: 随想
+tags: 随想
 ---
 
 之前提及过页式存储。今天想来聊一聊段式存储。

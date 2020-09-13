@@ -19,24 +19,44 @@
 # in the templates via {{ site.myvariable }}.
 
 title: 游先生的炼瓜所
-email: your-email@example.com
+email: adek06@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  不会做游戏的游戏开发者，退役二级魔法师，现在工作于 IoT 行业
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# twitter_username: jekyllrb
+github_username:  Adek06
 
 # Build settings
-theme: minima
+# theme: minima
+# theme: jekyll-theme-yat
+theme: jekyll-text-theme
+text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
+highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
+## => Paginate
+##############################
+paginate: 8
+paginate_path: /page:num # don't change this unless for special need
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: article
+      sharing: true
+      license: true
+      aside:
+        toc: true
+      show_edit_on_github: true
+      show_subscribe: true
+      pageview: true
+
 plugins:
   - jekyll-feed
 
-markdown: kramdown
-kramdown:
-   math_engine: mathjax
+markdown    : kramdown
+highlighter : rouge
+permalink   : date
 
 # Exclude from processing.
 # The following items will not be processed, by default.

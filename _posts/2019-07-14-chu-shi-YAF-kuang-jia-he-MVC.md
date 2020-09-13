@@ -1,7 +1,6 @@
 ---
-layout: post
 title:  初识 YAF 框架 和 MVC
-categories: 随想
+tags: 随想
 ---
 
 这是我第一次使用 PHP 做开发。
